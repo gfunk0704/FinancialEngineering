@@ -2,6 +2,38 @@
 
 namespace FinancialEngineering
 {
+	ImplicitFilteringSetting::ImplicitFilteringSetting(Real initial_h,
+													   Real min_h,
+												   	   Real beta,
+													   Real tol,
+													   Natural max_iter,
+													   Natural max_cut)
+	{
+		this->initial_h = initial_h;
+		this->min_h = min_h;
+		this->beta = beta;
+		this->tol = tol;
+		this->max_iter = max_iter;
+		this->max_cut = max_cut;
+	}
+
+	ImplicitFilteringSetting::ImplicitFilteringSetting():
+		ImplicitFilteringSetting(0.0009765625, 9.536743e-07, 0.5, 1E-8, 1000, 100)
+	{}
+
+	ImplicitFiltering::ImplicitFiltering(ImplicitFilteringSetting setting):
+		_initial_h(setting.initial_h),
+	    _min_h(setting.min_h),
+	    _beta(setting.beta),
+	    _tol(setting.tol),
+	    _max_iter(setting.max_iter),
+        _max_cut(setting.max_cut)
+	{}
+
+	ImplicitFiltering::ImplicitFiltering():
+		ImplicitFiltering(ImplicitFilteringSetting())
+	{}
+
 	OptimizationResult ImplicitFiltering::optimize(SharedPointer<ObjectiveFunction> func, RealArray initial_value, RealArray lower, RealArray upper)
 	{
 		RealArray par = _initial_value;

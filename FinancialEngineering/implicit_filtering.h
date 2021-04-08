@@ -20,13 +20,13 @@ namespace FinancialEngineering
 	class ImplicitFiltering : public GradientBasedOptimization
 	{
 	public:
-		ImplicitFiltering(RealArray, ImplicitFilteringSetting);
-		ImplicitFiltering(RealArray);
+		ImplicitFiltering(ImplicitFilteringSetting);
+		ImplicitFiltering();
 		OptimizationResult optimize(SharedPointer<ObjectiveFunction>, RealArray, RealArray, RealArray) override;
 	private:
-		Real _beta;
 		Real _initial_h;
 		Real _min_h;
+		Real _beta;
 		Real _tol;
 		Natural _max_iter;
 		Natural _max_cut;
