@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="來源檔案">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="來源檔案\time">
+      <UniqueIdentifier>{feccf25c-7f2f-4d6a-a47c-9fdf0ec12230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\quote">
+      <UniqueIdentifier>{7b175806-3fe3-498d-b9fb-80a577dcb5ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\term_structure">
+      <UniqueIdentifier>{5e0d65b2-681a-4d96-a8e8-45a6e2b92581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\quote\interest_rate">
+      <UniqueIdentifier>{347e5f49-f142-4933-a39a-b415579cf2d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\term_structure\yield_term_structure">
+      <UniqueIdentifier>{84135c0b-a62b-42c2-ad20-f6acd28c0dd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math">
+      <UniqueIdentifier>{f0c36c2d-37c8-46b5-b12d-77bfb56d363c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\curve">
+      <UniqueIdentifier>{f2f7f84e-ee23-4620-9ec5-1157c1259053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\term_structure\volatility_term_structure">
+      <UniqueIdentifier>{281b5c9a-b357-49cd-8bcd-86de65928424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\time\holiday">
+      <UniqueIdentifier>{614d1b7c-6adf-4530-8f2a-e2910db80926}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\model">
+      <UniqueIdentifier>{5ee16a45-7118-4fd6-ab9f-103294223362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\random">
+      <UniqueIdentifier>{b2f2e7c3-ea0e-4b12-ae10-a93a5934af1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\random\rng">
+      <UniqueIdentifier>{1a813511-2143-4e31-a816-d3cc0cc2176b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\random\distribution">
+      <UniqueIdentifier>{294c79af-e79e-4b37-8215-42d3a675c1e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\quote\equity">
+      <UniqueIdentifier>{c4e452e0-cbb0-4dd2-a852-9dc01260bdfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\model\asset_model">
+      <UniqueIdentifier>{f4d35797-7d08-4bcf-bcb3-6cf3e65b5dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\numerical_method">
+      <UniqueIdentifier>{4661b09e-8401-4873-a690-1a07692d2a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\numerical_method\simulation">
+      <UniqueIdentifier>{c7f0aee5-1618-445c-b112-afb0bb92f745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\random\distribution\gaussian">
+      <UniqueIdentifier>{dfa9473f-784e-4f4e-96de-c271627dd3b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\random\rng\64bits">
+      <UniqueIdentifier>{cf54aca7-e9b0-4814-99d9-368972d65330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\random\rng\32bits">
+      <UniqueIdentifier>{1bba0316-6f27-41b7-910c-27e0f2b86721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\instrument">
+      <UniqueIdentifier>{d64fe6dc-664e-4850-ac97-f3375af801e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\instrument\equity">
+      <UniqueIdentifier>{519953e4-4c8f-463a-a92b-fb2f433421e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\optimization">
+      <UniqueIdentifier>{903d585b-ba1d-4eb7-ba87-b68487127057}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="period.cpp">
+      <Filter>來源檔案\time</Filter>
+    </ClCompile>
+    <ClCompile Include="calendar.cpp">
+      <Filter>來源檔案\time</Filter>
+    </ClCompile>
+    <ClCompile Include="day_count.cpp">
+      <Filter>來源檔案\time</Filter>
+    </ClCompile>
+    <ClCompile Include="curve.cpp">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClCompile>
+    <ClCompile Include="yield_curve.cpp">
+      <Filter>來源檔案\term_structure\yield_term_structure</Filter>
+    </ClCompile>
+    <ClCompile Include="piecewise_constant.cpp">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClCompile>
+    <ClCompile Include="quote.cpp">
+      <Filter>來源檔案\quote</Filter>
+    </ClCompile>
+    <ClCompile Include="interest_rate_quote.cpp">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClCompile>
+    <ClCompile Include="deposit_rate.cpp">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClCompile>
+    <ClCompile Include="nonparametric_yield_term_structure.cpp">
+      <Filter>來源檔案\term_structure\yield_term_structure</Filter>
+    </ClCompile>
+    <ClCompile Include="bootstrapper.cpp">
+      <Filter>來源檔案\term_structure\yield_term_structure</Filter>
+    </ClCompile>
+    <ClCompile Include="taiwan.cpp">
+      <Filter>來源檔案\time\holiday</Filter>
+    </ClCompile>
+    <ClCompile Include="is_weekend.cpp">
+      <Filter>來源檔案\time\holiday</Filter>
+    </ClCompile>
+    <ClCompile Include="user_test.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="asset_model.cpp">
+      <Filter>來源檔案\model\asset_model</Filter>
+    </ClCompile>
+    <ClCompile Include="irs_rate.cpp">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClCompile>
+    <ClCompile Include="interest_rate_future.cpp">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClCompile>
+    <ClCompile Include="uniform.cpp">
+      <Filter>來源檔案\math\random\distribution</Filter>
+    </ClCompile>
+    <ClCompile Include="gaussian_inverse.cpp">
+      <Filter>來源檔案\math\random\distribution\gaussian</Filter>
+    </ClCompile>
+    <ClCompile Include="xotshift64.cpp">
+      <Filter>來源檔案\math\random\rng\64bits</Filter>
+    </ClCompile>
+    <ClCompile Include="xorshift32.cpp">
+      <Filter>來源檔案\math\random\rng\32bits</Filter>
+    </ClCompile>
+    <ClCompile Include="rng_64bits.cpp">
+      <Filter>來源檔案\math\random\rng\64bits</Filter>
+    </ClCompile>
+    <ClCompile Include="rng_32bits.cpp">
+      <Filter>來源檔案\math\random\rng\32bits</Filter>
+    </ClCompile>
+    <ClCompile Include="gaussian_ziggurat.cpp">
+      <Filter>來源檔案\math\random\distribution\gaussian</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator.cpp">
+      <Filter>來源檔案\numerical_method\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="black_scholes_simulator.cpp">
+      <Filter>來源檔案\numerical_method\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="black_scholes.cpp">
+      <Filter>來源檔案\model\asset_model</Filter>
+    </ClCompile>
+    <ClCompile Include="heston.cpp">
+      <Filter>來源檔案\model\asset_model</Filter>
+    </ClCompile>
+    <ClCompile Include="uncertain_volatility.cpp">
+      <Filter>來源檔案\model\asset_model</Filter>
+    </ClCompile>
+    <ClCompile Include="equity_derivative_quote.cpp">
+      <Filter>來源檔案\quote\equity</Filter>
+    </ClCompile>
+    <ClCompile Include="heston_simulator.cpp">
+      <Filter>來源檔案\numerical_method\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="uncertain_volatility_simulator.cpp">
+      <Filter>來源檔案\numerical_method\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="jde.cpp">
+      <Filter>來源檔案\math\optimization</Filter>
+    </ClCompile>
+    <ClCompile Include="nonreplacement_sampling.cpp">
+      <Filter>來源檔案\math\random</Filter>
+    </ClCompile>
+    <ClCompile Include="implicit_filtering.cpp">
+      <Filter>來源檔案\math\optimization</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="base.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="period.h">
+      <Filter>來源檔案\time</Filter>
+    </ClInclude>
+    <ClInclude Include="date.h">
+      <Filter>來源檔案\time</Filter>
+    </ClInclude>
+    <ClInclude Include="calendar.h">
+      <Filter>來源檔案\time</Filter>
+    </ClInclude>
+    <ClInclude Include="day_count.h">
+      <Filter>來源檔案\time</Filter>
+    </ClInclude>
+    <ClInclude Include="quote.h">
+      <Filter>來源檔案\quote</Filter>
+    </ClInclude>
+    <ClInclude Include="nonparametric_yield_term_structure.h">
+      <Filter>來源檔案\term_structure\yield_term_structure</Filter>
+    </ClInclude>
+    <ClInclude Include="curve.h">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClInclude>
+    <ClInclude Include="interest_rate_quote.h">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClInclude>
+    <ClInclude Include="deposit_rate.h">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClInclude>
+    <ClInclude Include="yield_curve.h">
+      <Filter>來源檔案\term_structure\yield_term_structure</Filter>
+    </ClInclude>
+    <ClInclude Include="piecewise_constant.h">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClInclude>
+    <ClInclude Include="bootstrapper.h">
+      <Filter>來源檔案\term_structure\yield_term_structure</Filter>
+    </ClInclude>
+    <ClInclude Include="taiwan.h">
+      <Filter>來源檔案\time\holiday</Filter>
+    </ClInclude>
+    <ClInclude Include="is_weekend.h">
+      <Filter>來源檔案\time\holiday</Filter>
+    </ClInclude>
+    <ClInclude Include="global_variable.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="uniform.h">
+      <Filter>來源檔案\math\random\distribution</Filter>
+    </ClInclude>
+    <ClInclude Include="equity_derivative_quote.h">
+      <Filter>來源檔案\quote\equity</Filter>
+    </ClInclude>
+    <ClInclude Include="deterministic_volatility_function.h">
+      <Filter>來源檔案\term_structure\volatility_term_structure</Filter>
+    </ClInclude>
+    <ClInclude Include="black_scholes.h">
+      <Filter>來源檔案\model\asset_model</Filter>
+    </ClInclude>
+    <ClInclude Include="asset_model.h">
+      <Filter>來源檔案\model\asset_model</Filter>
+    </ClInclude>
+    <ClInclude Include="irs_rate.h">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClInclude>
+    <ClInclude Include="interest_rate_future.h">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClInclude>
+    <ClInclude Include="fed_fund_future.h">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator.h">
+      <Filter>來源檔案\numerical_method\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="gaussian.h">
+      <Filter>來源檔案\math\random\distribution\gaussian</Filter>
+    </ClInclude>
+    <ClInclude Include="gaussian_inverse.h">
+      <Filter>來源檔案\math\random\distribution\gaussian</Filter>
+    </ClInclude>
+    <ClInclude Include="xorshift64.h">
+      <Filter>來源檔案\math\random\rng\64bits</Filter>
+    </ClInclude>
+    <ClInclude Include="xorshift32.h">
+      <Filter>來源檔案\math\random\rng\32bits</Filter>
+    </ClInclude>
+    <ClInclude Include="rng_64bits.h">
+      <Filter>來源檔案\math\random\rng\64bits</Filter>
+    </ClInclude>
+    <ClInclude Include="rng_32bits.h">
+      <Filter>來源檔案\math\random\rng\32bits</Filter>
+    </ClInclude>
+    <ClInclude Include="gaussian_ziggurat.h">
+      <Filter>來源檔案\math\random\distribution\gaussian</Filter>
+    </ClInclude>
+    <ClInclude Include="black_scholes_simulator.h">
+      <Filter>來源檔案\numerical_method\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="heston.h">
+      <Filter>來源檔案\model\asset_model</Filter>
+    </ClInclude>
+    <ClInclude Include="uncertain_volatility.h">
+      <Filter>來源檔案\model\asset_model</Filter>
+    </ClInclude>
+    <ClInclude Include="heston_simulator.h">
+      <Filter>來源檔案\numerical_method\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="uncertain_volatility_simulator.h">
+      <Filter>來源檔案\numerical_method\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="instrument.h">
+      <Filter>來源檔案\instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="optimization.h">
+      <Filter>來源檔案\math\optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="jde.h">
+      <Filter>來源檔案\math\optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="nonreplacement_sampling.h">
+      <Filter>來源檔案\math\random</Filter>
+    </ClInclude>
+    <ClInclude Include="implicit_filtering.h">
+      <Filter>來源檔案\math\optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="option.h">
+      <Filter>來源檔案\instrument\equity</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
