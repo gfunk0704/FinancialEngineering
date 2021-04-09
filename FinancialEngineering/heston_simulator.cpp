@@ -2,24 +2,21 @@
 
 namespace FinancialEngineering
 {
-	HestonSimulator::HestonSimulator(SharedPointer<Heston> model, 
+	HestonSimulator::HestonSimulator(SharedPointer<AssetModel> model, 
 		                             SharedPointer<Gaussian> gaussian_rng) :
-		Simulator(gaussian_rng, model->get_risk_free_rate()),
-		_model(model)
+		Simulator(model, gaussian_rng)
 	{}
 
 	void HestonSimulator::initialize(Date end_date)
 	{
-		_gaussian_rng->reset();
-		Natural n_step = (Natural)(end_date - GlobalVariable::get_evaluation_date());
-		_random1 = generate_random_numbers(n_step);
-		_random2 = generate_random_numbers(n_step);
+		Simulator::initialize(end_date);
+		_random1 = generate_random_numbers(_n_step);
+		_random2 = generate_random_numbers(_n_step);
 	}
 
 	// volatility transform scheme
 	SimulationSample HestonSimulator::generate_sample()
 	{
-		Real tau = 0.0;
 		Natural n_sample = GlobalVariable::get_simulation_path();
 		Parameter par = _model->get_parameter();
 		Real v0 = par["v0"];
@@ -34,13 +31,11 @@ namespace FinancialEngineering
 		Real half_kappa = 0.5 * kappa;
 		Real half_sigma = 0.5 * sigma;
 		Real rho_coef = std::sqrt(1 - rho * rho);
-		YieldCurve yield_curve = _term_structure->to_yield_curve();
 		SimulationSample sample{ RealEigenArray::Constant(n_sample, _model->get_initial_value()) };
 		RealEigenArray wt = RealEigenArray::Constant(n_sample, std::sqrt(v0));
-		Natural n_step = _random1.size();
-		for (Size i = 0; i < n_step; i++)
+		for (Size i = 0; i < _n_step; i++)
 		{
-			RealEigenArray log_drift = (yield_curve.forward_rate(tau, tau + dt) - 0.5 * wt * wt) * dt;
+			RealEigenArray log_drift = (_rt[i] - 0.5 * wt * wt) * dt;
 			sample.push_back(sample.back() * Eigen::exp(log_drift + wt * sqrt_dt * (rho * _random1[i] + rho_coef * _random2[i])));
 			RealEigenArray beta_sqr = theta + (wt * wt - theta) * beta_exp - beta_coef;
 			for (Size j = 0; j < n_sample; j++)

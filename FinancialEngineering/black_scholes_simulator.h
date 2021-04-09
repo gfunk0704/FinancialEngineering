@@ -9,11 +9,10 @@ namespace FinancialEngineering
 	class BlackScholesSimulator : public Simulator
 	{
 	public:
-		BlackScholesSimulator(SharedPointer<BlackScholes>, SharedPointer<Gaussian>);
+		BlackScholesSimulator(SharedPointer<AssetModel>, SharedPointer<Gaussian>);
 		void initialize(Date) override;
 		SimulationSample generate_sample() override;
 	private:
-		SharedPointer<BlackScholes> _model;
 		SimulationSample _random;
 	};
 }

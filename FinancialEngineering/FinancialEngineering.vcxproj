@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="american_call_warrant.h" />
+    <ClInclude Include="american_style_option.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="black_scholes_simulator.h" />
     <ClInclude Include="black_scholes.h" />
@@ -44,6 +46,7 @@
     <ClInclude Include="is_weekend.h" />
     <ClInclude Include="asset_model.h" />
     <ClInclude Include="jde.h" />
+    <ClInclude Include="monte_carlo_calibrater.h" />
     <ClInclude Include="nonreplacement_sampling.h" />
     <ClInclude Include="optimization.h" />
     <ClInclude Include="option.h" />
@@ -51,6 +54,7 @@
     <ClInclude Include="rng_32bits.h" />
     <ClInclude Include="rng_64bits.h" />
     <ClInclude Include="simulator.h" />
+    <ClInclude Include="simulator_factory.h" />
     <ClInclude Include="taiwan.h" />
     <ClInclude Include="uncertain_volatility.h" />
     <ClInclude Include="uncertain_volatility_simulator.h" />
@@ -64,6 +68,7 @@
     <ClInclude Include="quote.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="american_plain_vanilla.cpp" />
     <ClCompile Include="black_scholes.cpp" />
     <ClCompile Include="black_scholes_simulator.cpp" />
     <ClCompile Include="bootstrapper.cpp" />
@@ -85,6 +90,7 @@
     <ClCompile Include="rng_32bits.cpp" />
     <ClCompile Include="rng_64bits.cpp" />
     <ClCompile Include="simulator.cpp" />
+    <ClCompile Include="simulator_factory.cpp" />
     <ClCompile Include="uncertain_volatility.cpp" />
     <ClCompile Include="uncertain_volatility_simulator.cpp" />
     <ClCompile Include="uniform.cpp" />

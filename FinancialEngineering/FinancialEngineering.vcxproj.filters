@@ -74,6 +74,12 @@
     <Filter Include="來源檔案\math\optimization">
       <UniqueIdentifier>{903d585b-ba1d-4eb7-ba87-b68487127057}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\numerical_method\simulation\simulator">
+      <UniqueIdentifier>{7b7e6302-e152-4d45-b025-f60283959a43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\numerical_method\simulation\evaluator">
+      <UniqueIdentifier>{c69796d8-6239-467a-8bf7-ba34890d2ac9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="period.cpp">
@@ -148,12 +154,6 @@
     <ClCompile Include="gaussian_ziggurat.cpp">
       <Filter>來源檔案\math\random\distribution\gaussian</Filter>
     </ClCompile>
-    <ClCompile Include="simulator.cpp">
-      <Filter>來源檔案\numerical_method\simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="black_scholes_simulator.cpp">
-      <Filter>來源檔案\numerical_method\simulation</Filter>
-    </ClCompile>
     <ClCompile Include="black_scholes.cpp">
       <Filter>來源檔案\model\asset_model</Filter>
     </ClCompile>
@@ -166,12 +166,6 @@
     <ClCompile Include="equity_derivative_quote.cpp">
       <Filter>來源檔案\quote\equity</Filter>
     </ClCompile>
-    <ClCompile Include="heston_simulator.cpp">
-      <Filter>來源檔案\numerical_method\simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="uncertain_volatility_simulator.cpp">
-      <Filter>來源檔案\numerical_method\simulation</Filter>
-    </ClCompile>
     <ClCompile Include="jde.cpp">
       <Filter>來源檔案\math\optimization</Filter>
     </ClCompile>
@@ -180,6 +174,24 @@
     </ClCompile>
     <ClCompile Include="implicit_filtering.cpp">
       <Filter>來源檔案\math\optimization</Filter>
+    </ClCompile>
+    <ClCompile Include="american_plain_vanilla.cpp">
+      <Filter>來源檔案\instrument\equity</Filter>
+    </ClCompile>
+    <ClCompile Include="black_scholes_simulator.cpp">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClCompile>
+    <ClCompile Include="heston_simulator.cpp">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator.cpp">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClCompile>
+    <ClCompile Include="uncertain_volatility_simulator.cpp">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator_factory.cpp">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,9 +267,6 @@
     <ClInclude Include="fed_fund_future.h">
       <Filter>來源檔案\quote\interest_rate</Filter>
     </ClInclude>
-    <ClInclude Include="simulator.h">
-      <Filter>來源檔案\numerical_method\simulation</Filter>
-    </ClInclude>
     <ClInclude Include="gaussian.h">
       <Filter>來源檔案\math\random\distribution\gaussian</Filter>
     </ClInclude>
@@ -279,20 +288,11 @@
     <ClInclude Include="gaussian_ziggurat.h">
       <Filter>來源檔案\math\random\distribution\gaussian</Filter>
     </ClInclude>
-    <ClInclude Include="black_scholes_simulator.h">
-      <Filter>來源檔案\numerical_method\simulation</Filter>
-    </ClInclude>
     <ClInclude Include="heston.h">
       <Filter>來源檔案\model\asset_model</Filter>
     </ClInclude>
     <ClInclude Include="uncertain_volatility.h">
       <Filter>來源檔案\model\asset_model</Filter>
-    </ClInclude>
-    <ClInclude Include="heston_simulator.h">
-      <Filter>來源檔案\numerical_method\simulation</Filter>
-    </ClInclude>
-    <ClInclude Include="uncertain_volatility_simulator.h">
-      <Filter>來源檔案\numerical_method\simulation</Filter>
     </ClInclude>
     <ClInclude Include="instrument.h">
       <Filter>來源檔案\instrument</Filter>
@@ -311,6 +311,30 @@
     </ClInclude>
     <ClInclude Include="option.h">
       <Filter>來源檔案\instrument\equity</Filter>
+    </ClInclude>
+    <ClInclude Include="american_style_option.h">
+      <Filter>來源檔案\instrument\equity</Filter>
+    </ClInclude>
+    <ClInclude Include="american_call_warrant.h">
+      <Filter>來源檔案\instrument\equity</Filter>
+    </ClInclude>
+    <ClInclude Include="black_scholes_simulator.h">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="heston_simulator.h">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator.h">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="uncertain_volatility_simulator.h">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="monte_carlo_calibrater.h">
+      <Filter>來源檔案\numerical_method\simulation\evaluator</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator_factory.h">
+      <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

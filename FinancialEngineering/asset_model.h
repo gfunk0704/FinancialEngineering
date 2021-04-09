@@ -9,6 +9,13 @@ namespace FinancialEngineering
 	class AssetModel
 	{
 	public:
+		enum class ModelType
+		{
+			BLACK_SCHOLES,
+			HESTON,
+			UNCERTAIN_VOLATILITY
+		};
+
 		AssetModel(Date, Real, SharedPointer<NonparametricYieldTermStructure>);
 		Date get_initial_date();
 		Real get_initial_value();
@@ -16,6 +23,7 @@ namespace FinancialEngineering
 		virtual SmallNatural n_parameter() = 0;
 		void set_parameter(Parameter);
 		Parameter get_parameter();
+		virtual ModelType model_type() = 0;
 		virtual RealArray parameter_lower() = 0;
 		virtual RealArray parameter_upper() = 0;
 	protected:

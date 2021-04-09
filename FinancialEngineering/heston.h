@@ -12,6 +12,7 @@ namespace FinancialEngineering
 		virtual SmallNatural n_parameter() override;
 		virtual RealArray parameter_lower() override;
 		virtual RealArray parameter_upper() override;
+		ModelType model_type() override;
 	protected:
 		//parameter order: v0, kappa, theta, sigma, rho
 		virtual std::vector<std::string> parameter_name() override;
@@ -35,5 +36,10 @@ namespace FinancialEngineering
 	inline std::vector<std::string> Heston::parameter_name()
 	{
 		return std::vector<std::string>{"v0", "kappa", "theta", "sigma", "rho"};
+	}
+
+	inline AssetModel::ModelType Heston::model_type()
+	{
+		return ModelType::HESTON;
 	}
 }

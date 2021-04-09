@@ -12,6 +12,7 @@ namespace FinancialEngineering
 		SmallNatural n_parameter() override;
 		RealArray parameter_lower() override;
 		RealArray parameter_upper() override;
+		ModelType model_type() override;
 	protected:
 		//parameter order: sigma
 		std::vector<std::string> parameter_name() override;
@@ -35,5 +36,10 @@ namespace FinancialEngineering
 	inline std::vector<std::string> BlackScholes::parameter_name()
 	{
 		return std::vector<std::string>{"sigma"};
+	}
+
+	inline AssetModel::ModelType BlackScholes::model_type()
+	{
+		return ModelType::BLACK_SCHOLES;
 	}
 }

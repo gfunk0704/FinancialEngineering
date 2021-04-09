@@ -2,17 +2,16 @@
 
 namespace FinancialEngineering
 {
-	UncertainVolatilitySimulator::UncertainVolatilitySimulator(SharedPointer<UncertainVolatility> model, 
+	UncertainVolatilitySimulator::UncertainVolatilitySimulator(SharedPointer<AssetModel> model, 
 		                                                       SharedPointer<Gaussian> gaussian_rng,
 		                                                       SharedPointer<RealUniform> uniform_rng) :
-		Simulator(gaussian_rng, model->get_risk_free_rate()), 
-		_model(model), 
+		Simulator(model, gaussian_rng),
 		_uniform_rng(uniform_rng)
 	{}
 
 	void UncertainVolatilitySimulator::initialize(Date end_date)
 	{
-		_gaussian_rng->reset();
+		Simulator::initialize(end_date);
 		_uniform_rng.reset();
 		_random = generate_random_numbers((Natural)(end_date - GlobalVariable::get_evaluation_date()));
 		_uniform_random = RealArray(GlobalVariable::get_simulation_path());
@@ -33,19 +32,18 @@ namespace FinancialEngineering
 		Real lambda = par["lambda"];
 		RealEigenArray drift_coef(n_sample);
 		RealEigenArray log_diffusion_coef(n_sample);
-		YieldCurve yield_curve = _term_structure->to_yield_curve();
 		for (Size i = 0; i < n_sample; i++)
 		{
-			Real sigma = lambda < _uniform_random[i] ? sigma1 : sigma2;
+			Real sigma =  _uniform_random[i] < lambda ? sigma1 : sigma2;
 			drift_coef(i) = 0.5 * sigma * sigma;
 			log_diffusion_coef(i) = sigma * sqrt_dt;
 		}
 
+		Size i = 0;
 		for (SimulationSample::iterator iter = _random.begin(); iter != _random.end(); ++iter)
 		{
-			RealEigenArray log_drift = (yield_curve.forward_rate(tau, tau + dt) - drift_coef);
+			RealEigenArray log_drift = (_rt[i++] - drift_coef);
 			sample.push_back(sample.back() * Eigen::exp(log_drift + log_diffusion_coef * (*iter)));
-			tau += dt;
 		}
 		return sample;
 	}
