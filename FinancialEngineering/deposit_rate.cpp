@@ -21,4 +21,12 @@ namespace FinancialEngineering
 		_tenor(tenor),
 		_spot_lag(spot_lag)
 	{}
+
+	DepositRate::DepositRate(Period tenor,
+							 Real value,
+							 DayCountConvention day_count,
+							 SharedPointer<Calendar> calendar,
+							 SmallNatural spot_lag) :
+		DepositRate(GlobalVariable::get_evaluation_date(), tenor, value, day_count, calendar, spot_lag)
+	{}
 }

@@ -9,6 +9,13 @@ namespace FinancialEngineering
 	{}
 
 	NonparametricYieldTermStructure::NonparametricYieldTermStructure(CurveType type,
+															   		 DayCountConvention day_count,
+																	 SharedPointer<Calendar> calendar):
+		NonparametricYieldTermStructure(type, day_count, calendar, GlobalVariable::get_evaluation_date())
+
+	{}
+
+	NonparametricYieldTermStructure::NonparametricYieldTermStructure(CurveType type,
 																	 DayCountConvention day_count, 
 		                                                             SharedPointer<Calendar> calendar, 
 		                                                             Date value_date,

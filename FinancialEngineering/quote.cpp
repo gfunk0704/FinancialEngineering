@@ -9,4 +9,9 @@ namespace FinancialEngineering
 		_value(value), 
 		_calendar(calendar)
 	{}
+
+	Quote::Quote(Real value,
+				 SharedPointer<Calendar> calendar) :
+		Quote(GlobalVariable::get_evaluation_date(), value, calendar)
+	{}
 }

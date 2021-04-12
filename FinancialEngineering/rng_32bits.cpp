@@ -7,6 +7,6 @@ namespace FinancialEngineering
 	{}
 
 	Rng32Bits::Rng32Bits() :
-		Rng32Bits((Natural)GlobalVariable::get_seed())
+		Rng32Bits(GlobalVariable::get_seed())
 	{}
 }

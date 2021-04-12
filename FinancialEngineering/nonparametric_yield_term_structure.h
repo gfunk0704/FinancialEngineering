@@ -1,5 +1,6 @@
 #pragma once
 
+#include <global_variable.h>
 #include <piecewise_constant.h>
 #include <calendar.h>
 #include <day_count.h>
@@ -22,6 +23,7 @@ namespace FinancialEngineering
 			PIECEWISE_CONSTANT
 		};
 
+		NonparametricYieldTermStructure(CurveType, DayCountConvention, SharedPointer<Calendar>);
 		NonparametricYieldTermStructure(CurveType, DayCountConvention, SharedPointer<Calendar>, Date);
 		NonparametricYieldTermStructure(CurveType, DayCountConvention, SharedPointer<Calendar>, Date, std::vector<YieldPoint>);
 		void push_back(YieldPoint);

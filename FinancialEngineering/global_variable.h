@@ -10,13 +10,13 @@ namespace FinancialEngineering
 	public:
 		static void set_evaluation_date(Date);
 		static Date get_evaluation_date();
-		static void set_seed(BigNatural);
-		static BigNatural get_seed();
+		static void set_seed(Natural);
+		static Natural get_seed();
 		static void set_simulation_path(Natural);
 		static Natural get_simulation_path();
 	private:
 		static Date _evaluation_date;
-		static BigNatural _seed;
+		static Natural _seed;
 		static Natural _path;
 	};
 
@@ -31,12 +31,12 @@ namespace FinancialEngineering
 		return _evaluation_date;
 	}
 
-	inline void GlobalVariable::set_seed(BigNatural seed)
+	inline void GlobalVariable::set_seed(Natural seed)
 	{
 		_seed = seed;
 	}
 
-	inline BigNatural GlobalVariable::get_seed()
+	inline Natural GlobalVariable::get_seed()
 	{
 		return _seed;
 	}

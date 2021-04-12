@@ -2,6 +2,7 @@
 
 #include <calendar.h>
 #include <period.h>
+#include <global_variable.h>
 
 namespace FinancialEngineering
 {
@@ -9,6 +10,7 @@ namespace FinancialEngineering
 	{
 	public:
 		Quote(Date, Real, SharedPointer<Calendar>);
+		Quote(Real, SharedPointer<Calendar>);
 		Real value();
 	protected:
 		SharedPointer<Calendar> _calendar;

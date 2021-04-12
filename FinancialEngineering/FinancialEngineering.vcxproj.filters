@@ -175,7 +175,7 @@
     <ClCompile Include="implicit_filtering.cpp">
       <Filter>來源檔案\math\optimization</Filter>
     </ClCompile>
-    <ClCompile Include="american_plain_vanilla.cpp">
+    <ClCompile Include="american_style_option.cpp">
       <Filter>來源檔案\instrument\equity</Filter>
     </ClCompile>
     <ClCompile Include="black_scholes_simulator.cpp">
@@ -192,6 +192,21 @@
     </ClCompile>
     <ClCompile Include="simulator_factory.cpp">
       <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClCompile>
+    <ClCompile Include="monte_carlo_evaluator.cpp">
+      <Filter>來源檔案\numerical_method\simulation\evaluator</Filter>
+    </ClCompile>
+    <ClCompile Include="option.cpp">
+      <Filter>來源檔案\instrument\equity</Filter>
+    </ClCompile>
+    <ClCompile Include="instrument.cpp">
+      <Filter>來源檔案\instrument</Filter>
+    </ClCompile>
+    <ClCompile Include="american_call_warrant.cpp">
+      <Filter>來源檔案\instrument\equity</Filter>
+    </ClCompile>
+    <ClCompile Include="global_variable.cpp">
+      <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -330,7 +345,7 @@
     <ClInclude Include="uncertain_volatility_simulator.h">
       <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
     </ClInclude>
-    <ClInclude Include="monte_carlo_calibrater.h">
+    <ClInclude Include="monte_carlo_evaluator.h">
       <Filter>來源檔案\numerical_method\simulation\evaluator</Filter>
     </ClInclude>
     <ClInclude Include="simulator_factory.h">

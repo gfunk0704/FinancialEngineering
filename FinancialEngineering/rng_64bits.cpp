@@ -7,6 +7,6 @@ namespace FinancialEngineering
 	{}
 
 	Rng64Bits::Rng64Bits():
-		Rng64Bits(GlobalVariable::get_seed())
+		Rng64Bits(BigNatural(GlobalVariable::get_seed()))
 	{}
 }

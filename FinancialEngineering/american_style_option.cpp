@@ -2,6 +2,13 @@
 
 namespace FinancialEngineering
 {
+	AmericanStyleOption::AmericanStyleOption(SharedPointer<Calendar> calendar,
+										   	 Date expiry,
+											 SmallNatural delivery,
+											 Real strike) :
+		Option(calendar, expiry, delivery, strike)
+	{}
+
 	DateArray AmericanStyleOption::exercie_date(Date value_date)
 	{
 		if (value_date > _expiry)

@@ -8,7 +8,7 @@ namespace FinancialEngineering
 	class EquityDerivativeQuote: public Quote
 	{
 	public:
-		EquityDerivativeQuote(Derivative, value);
+		EquityDerivativeQuote(Derivative, Real);
 		Derivative get_instrument();
 	private:
 		Derivative _derivative;

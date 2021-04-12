@@ -10,6 +10,11 @@ namespace FinancialEngineering
 		_term_structure(term_structure)
 	{}
 
+	AssetModel::AssetModel(Real initial_value,
+						   SharedPointer<NonparametricYieldTermStructure> term_structure):
+		AssetModel(GlobalVariable::get_evaluation_date(), initial_value, term_structure)
+	{}
+
 	Parameter AssetModel::get_parameter()
 	{
 		Parameter par;

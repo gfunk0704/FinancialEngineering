@@ -46,7 +46,7 @@
     <ClInclude Include="is_weekend.h" />
     <ClInclude Include="asset_model.h" />
     <ClInclude Include="jde.h" />
-    <ClInclude Include="monte_carlo_calibrater.h" />
+    <ClInclude Include="monte_carlo_evaluator.h" />
     <ClInclude Include="nonreplacement_sampling.h" />
     <ClInclude Include="optimization.h" />
     <ClInclude Include="option.h" />
@@ -68,7 +68,8 @@
     <ClInclude Include="quote.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="american_plain_vanilla.cpp" />
+    <ClCompile Include="american_call_warrant.cpp" />
+    <ClCompile Include="american_style_option.cpp" />
     <ClCompile Include="black_scholes.cpp" />
     <ClCompile Include="black_scholes_simulator.cpp" />
     <ClCompile Include="bootstrapper.cpp" />
@@ -79,14 +80,18 @@
     <ClCompile Include="equity_derivative_quote.cpp" />
     <ClCompile Include="gaussian_inverse.cpp" />
     <ClCompile Include="gaussian_ziggurat.cpp" />
+    <ClCompile Include="global_variable.cpp" />
     <ClCompile Include="heston.cpp" />
     <ClCompile Include="heston_simulator.cpp" />
     <ClCompile Include="implicit_filtering.cpp" />
+    <ClCompile Include="instrument.cpp" />
     <ClCompile Include="interest_rate_future.cpp" />
     <ClCompile Include="irs_rate.cpp" />
     <ClCompile Include="asset_model.cpp" />
     <ClCompile Include="jde.cpp" />
+    <ClCompile Include="monte_carlo_evaluator.cpp" />
     <ClCompile Include="nonreplacement_sampling.cpp" />
+    <ClCompile Include="option.cpp" />
     <ClCompile Include="rng_32bits.cpp" />
     <ClCompile Include="rng_64bits.cpp" />
     <ClCompile Include="simulator.cpp" />
@@ -177,7 +182,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..;.;C:\Users\gfunk0704\Dropbox\github\FinancialEngineering\include\eigen-3.3.9;C:\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -193,7 +198,7 @@
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..;.;C:\Users\gfunk0704\Dropbox\github\FinancialEngineering\include\eigen-3.3.9;C:\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -209,7 +214,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..;.;C:\Users\gfunk0704\Dropbox\github\FinancialEngineering\include\eigen-3.3.9;C:\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -225,7 +230,7 @@
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..;.;C:\Users\gfunk0704\Dropbox\github\FinancialEngineering\include\eigen-3.3.9;C:\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

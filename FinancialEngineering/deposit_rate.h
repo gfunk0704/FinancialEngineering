@@ -26,6 +26,7 @@ namespace FinancialEngineering
 	{
 	public:
 		DepositRate(Date, Period, Real, DayCountConvention, SharedPointer<Calendar>, SmallNatural);
+		DepositRate(Period, Real, DayCountConvention, SharedPointer<Calendar>, SmallNatural);
 		SharedPointer<InterestRateImpliedQuote> implied_quote() override;
 		Date expiry_date() override;
 	protected:

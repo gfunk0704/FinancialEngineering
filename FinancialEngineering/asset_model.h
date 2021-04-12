@@ -17,6 +17,7 @@ namespace FinancialEngineering
 		};
 
 		AssetModel(Date, Real, SharedPointer<NonparametricYieldTermStructure>);
+		AssetModel(Real, SharedPointer<NonparametricYieldTermStructure>);
 		Date get_initial_date();
 		Real get_initial_value();
 		SharedPointer<NonparametricYieldTermStructure> get_risk_free_rate();
