@@ -8,6 +8,7 @@ namespace FinancialEngineering
 	{
 	public:
 		Xorshift32(Natural);
+		Xorshift32();
 		void reset() override;
 		Natural next() override;
 		void status() override;
@@ -38,6 +39,7 @@ namespace FinancialEngineering
 	{
 	public:
 		Xorwow(Natural);
+		Xorwow();
 		void reset() override;
 		Natural next() override;
 		void status() override;

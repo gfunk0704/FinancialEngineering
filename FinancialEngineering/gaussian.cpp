@@ -207,7 +207,7 @@ namespace FinancialEngineering
 
     static Real gaussian_polar_rejection (SharedPointer<Rng32Bits> rng)
     {
-        static double spare;
+        static Real spare;
         static bool has_spare = false;
 
         if (has_spare)
@@ -217,7 +217,7 @@ namespace FinancialEngineering
         }
         else 
         {
-            double u, v, s;
+            Real u, v, s;
             do 
             {
                 u = RealUniform::next_uniform(rng) * 2.0 - 1.0;
@@ -234,12 +234,13 @@ namespace FinancialEngineering
 
     static Real gaussian_ziggurat(SharedPointer<Rng32Bits> rng)
     {
-        static const int c[2] = { -1, 1 };
-        unsigned long i, j;
-        int f;
+        static const Integer c[2] = { -1, 1 };
+        Natural i, j;
+        Integer f;
         Real x;
 
-        for (;;) {
+        for (;;) 
+        {
             j = rng->next(); 	
             f = j & 1; 			
             j >>= 1;

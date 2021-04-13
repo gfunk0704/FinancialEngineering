@@ -8,6 +8,7 @@ namespace FinancialEngineering
 	{
 	public:
 		Rng32Bits(Natural);
+		Rng32Bits();
 		virtual void reset() = 0;
 		virtual Natural next() = 0;
 		virtual void status() = 0;

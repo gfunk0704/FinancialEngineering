@@ -3,11 +3,25 @@
 namespace FinancialEngineering
 {
 	Xorshift32::Xorshift32(Natural seed) :
-		Rng32Bits(seed), _s(seed)
-	{}
+		Rng32Bits(seed)
+	{
+		reset();
+	}
+
+	Xorshift32::Xorshift32() :
+		Rng32Bits()
+	{
+		reset();
+	}
 
 	Xorwow::Xorwow(Natural seed) :
 		Rng32Bits(seed)
+	{
+		reset();
+	}
+
+	Xorwow::Xorwow() :
+		Rng32Bits()
 	{
 		reset();
 	}

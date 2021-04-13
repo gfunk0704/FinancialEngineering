@@ -17,7 +17,7 @@ int main()
     // set global variable
     GlobalVariable::set_evaluation_date(Date(2021, boost::gregorian::Feb, 26));
     GlobalVariable::set_simulation_path(20000);
-    SharedPointer<Rng32Bits> rng = SharedPointer<Rng32Bits>(new Xorwow(GlobalVariable::get_seed()));
+    SharedPointer<Rng32Bits> rng = SharedPointer<Rng32Bits>(new Xorwow());
     Gaussian::set_method(Gaussian::Method::ZIGGURAT);
     // set TW holidays
     std::vector<IsHoliday> tw_holidays;
@@ -45,9 +45,9 @@ int main()
 
     // B-S model
     SharedPointer<AssetModel> model = SharedPointer<AssetModel>(new BlackScholes(spot, term_structure));
-    Parameter bs_par;
-    bs_par["sigma"] = 0.2881855;
-    model->set_parameter(bs_par);
+    Parameter par;
+    par["sigma"] = 0.2881855;
+    model->set_parameter(par);
 
     // set MC evaluator
     Date end_date = GlobalVariable::get_evaluation_date() + days(50);
