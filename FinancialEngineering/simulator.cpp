@@ -3,15 +3,15 @@
 namespace FinancialEngineering
 {
 	Simulator::Simulator(SharedPointer<AssetModel> model,
-						 SharedPointer<Gaussian> gaussian_rng):
+						 SharedPointer<Rng32Bits> rng):
 		_model(model),
-		_gaussian_rng(gaussian_rng),
+		_rng(rng),
 		_n_step(0)
 	{}
 
 	void Simulator::initialize(Date end_date)
 	{
-		_gaussian_rng->reset();
+		_rng->reset();
 		_n_step = (Natural)(end_date - GlobalVariable::get_evaluation_date());
 		_rt = RealArray();
 		Real tau = 0.0;
@@ -32,7 +32,7 @@ namespace FinancialEngineering
 			RealEigenArray step_random(n_sample);
 			for (Size i = 0; i < n_sample; i++)
 			{
-				step_random(i) = _gaussian_rng->next_gaussian();
+				step_random(i) = Gaussian::next_gaussian(_rng);
 			}
 			random.push_back(step_random);
 			--step;

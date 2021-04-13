@@ -8,15 +8,6 @@ namespace FinancialEngineering
 	class NonreplacementSampling
 	{
 	public:
-		NonreplacementSampling(NaturalUniform);
-		void reset();
-		NaturalArray sampling(Natural, Natural);
-	private:
-		NaturalUniform _uniform;
+		static NaturalArray sampling(SharedPointer<Rng32Bits>, Natural, Natural);
 	};
-
-	inline void NonreplacementSampling::reset()
-	{
-		_uniform.reset();
-	}
 }

@@ -2,11 +2,9 @@
 
 namespace FinancialEngineering
 {
-	NonreplacementSampling::NonreplacementSampling(NaturalUniform uniform):
-		_uniform(uniform)
-	{}
 
-	NaturalArray NonreplacementSampling::sampling(Natural size, 
+	NaturalArray NonreplacementSampling::sampling(SharedPointer<Rng32Bits> rng,
+                                                  Natural size, 
                                                   Natural n)
 	{
         // fill the reservoir array
@@ -17,7 +15,7 @@ namespace FinancialEngineering
 
         // replace elements with gradually decreasing probability
         for (Natural i = size; i < n; i++) {
-            Natural j = _uniform.next_uniform(i + 1);
+            Natural j = NaturalUniform::next_uniform(rng, i + 1);
             if (j < size)
                 sample[j] = i;
         }

@@ -1,11 +1,11 @@
 #pragma once
 
 #include <simulator_factory.h>
-#include <american_style_option.h>
+#include <evaluator.h>
 
 namespace FinancialEngineering
 {
-	class MonteCarloEvaluator
+	class MonteCarloEvaluator : public Evaluator
 	{
 	public:
 		MonteCarloEvaluator(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>, Date);
@@ -13,7 +13,6 @@ namespace FinancialEngineering
 
 	private:
 		Date _end_date;
-		SharedPointer<AssetModel> _model;
 		SharedPointer<Simulator> _simulator;
 		SimulationSample _sample;
 

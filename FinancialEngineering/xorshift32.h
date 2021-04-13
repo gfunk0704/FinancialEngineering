@@ -8,11 +8,9 @@ namespace FinancialEngineering
 	{
 	public:
 		Xorshift32(Natural);
-		Xorshift32();
 		void reset() override;
 		Natural next() override;
-	protected:
-		Natural _seed;
+		void status() override;
 	private:
 		Natural _s;
 	};
@@ -30,13 +28,19 @@ namespace FinancialEngineering
 		return _s;
 	}
 
-	class Xorrow : public Rng32Bits
+	inline void Xorshift32::status()
+	{
+		std::cout << "seed: " << _seed << std::endl;
+		std::cout << "s: " << _s << std::endl;
+	}
+
+	class Xorwow : public Rng32Bits
 	{
 	public:
-		Xorrow(Natural);
-		Xorrow();
+		Xorwow(Natural);
 		void reset() override;
 		Natural next() override;
+		void status() override;
 	private:
 		Natural _a, _b, _c, _d, _e;
 		Natural _counter;

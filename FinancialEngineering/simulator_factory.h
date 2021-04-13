@@ -8,10 +8,9 @@
 #include <heston_simulator.h>
 #include <uncertain_volatility.h>
 #include <uncertain_volatility_simulator.h>
-#include <gaussian_inverse.h>
-#include <gaussian_ziggurat.h>
+#include <gaussian.h>
 
 namespace FinancialEngineering
 {
-	SharedPointer<Simulator> simulator_factory(SharedPointer<AssetModel> model, SharedPointer<Rng32Bits> rng);
+	SharedPointer<Simulator> simulator_factory(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>);
 }

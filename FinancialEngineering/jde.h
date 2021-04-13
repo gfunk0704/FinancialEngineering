@@ -3,7 +3,7 @@
 #include <optimization.h>
 #include <rng_32bits.h>
 #include <uniform.h>
-#include <nonreplacement_sampling.h>s
+#include <nonreplacement_sampling.h>
 
 namespace FinancialEngineering
 {
@@ -28,9 +28,6 @@ namespace FinancialEngineering
 		Jde(SharedPointer<Rng32Bits>);
 		OptimizationResult optimize(SharedPointer<ObjectiveFunction>, RealArray, RealArray) override;
 	private:
-		RealUniform32 _real_unifrom_rng;
-		NaturalUniform _natural_unifrom_rng;
-		NonreplacementSampling _sampling;
 		Real _cr_threshold;
 		Real _f_threshold;
 		Real _f_lower;
@@ -38,7 +35,7 @@ namespace FinancialEngineering
 		Real _tol;
 		Natural _max_iter;
 		Natural _np;
-
+		SharedPointer<Rng32Bits> _rng;
 		void pair_sort(RealArray&, std::vector<RealArray>&);
 	};
 

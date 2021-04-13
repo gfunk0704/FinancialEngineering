@@ -3,26 +3,16 @@
 namespace FinancialEngineering
 {
 	Xorshift32::Xorshift32(Natural seed) :
+		Rng32Bits(seed), _s(seed)
+	{}
+
+	Xorwow::Xorwow(Natural seed) :
 		Rng32Bits(seed)
 	{
 		reset();
 	}
 
-	Xorshift32::Xorshift32():
-		Xorshift32((Natural)GlobalVariable::get_seed())
-	{}
-
-	Xorrow::Xorrow(Natural seed) :
-		Rng32Bits(seed)
-	{
-		reset();
-	}
-
-	Xorrow::Xorrow() :
-		Xorrow((Natural)GlobalVariable::get_seed())
-	{}
-
-	void Xorrow::reset()
+	void Xorwow::reset()
 	{
 		Xorshift32 rng(_seed);
 		_a = rng.next();
@@ -30,10 +20,10 @@ namespace FinancialEngineering
 		_c = rng.next();
 		_d = rng.next();
 		_e = rng.next();
-		_counter = rng.next();
+		_counter = 6615241;
 	}
 
-	Natural Xorrow::next()
+	Natural Xorwow::next()
 	{
 		Natural t = _e;
 		Natural s = _a;
@@ -47,5 +37,16 @@ namespace FinancialEngineering
 		_a = t;
 		_counter += 362437;
 		return t + _counter;
+	}
+
+	void Xorwow::status()
+	{
+		std::cout << "seed: " << _seed << std::endl;
+		std::cout << "a: " << _a << std::endl;
+		std::cout << "b: " << _b << std::endl;
+		std::cout << "c: " << _c << std::endl;
+		std::cout << "d: " << _d << std::endl;
+		std::cout << "e: " << _e << std::endl;
+		std::cout << "counter: " << _counter << std::endl;
 	}
 }

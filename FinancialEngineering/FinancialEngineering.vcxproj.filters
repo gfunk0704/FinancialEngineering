@@ -59,9 +59,6 @@
     <Filter Include="來源檔案\math\random\distribution\gaussian">
       <UniqueIdentifier>{dfa9473f-784e-4f4e-96de-c271627dd3b5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\math\random\rng\64bits">
-      <UniqueIdentifier>{cf54aca7-e9b0-4814-99d9-368972d65330}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\math\random\rng\32bits">
       <UniqueIdentifier>{1bba0316-6f27-41b7-910c-27e0f2b86721}</UniqueIdentifier>
     </Filter>
@@ -133,25 +130,13 @@
     <ClCompile Include="interest_rate_future.cpp">
       <Filter>來源檔案\quote\interest_rate</Filter>
     </ClCompile>
-    <ClCompile Include="uniform.cpp">
-      <Filter>來源檔案\math\random\distribution</Filter>
-    </ClCompile>
-    <ClCompile Include="gaussian_inverse.cpp">
-      <Filter>來源檔案\math\random\distribution\gaussian</Filter>
-    </ClCompile>
-    <ClCompile Include="xotshift64.cpp">
-      <Filter>來源檔案\math\random\rng\64bits</Filter>
-    </ClCompile>
     <ClCompile Include="xorshift32.cpp">
       <Filter>來源檔案\math\random\rng\32bits</Filter>
-    </ClCompile>
-    <ClCompile Include="rng_64bits.cpp">
-      <Filter>來源檔案\math\random\rng\64bits</Filter>
     </ClCompile>
     <ClCompile Include="rng_32bits.cpp">
       <Filter>來源檔案\math\random\rng\32bits</Filter>
     </ClCompile>
-    <ClCompile Include="gaussian_ziggurat.cpp">
+    <ClCompile Include="gaussian.cpp">
       <Filter>來源檔案\math\random\distribution\gaussian</Filter>
     </ClCompile>
     <ClCompile Include="black_scholes.cpp">
@@ -204,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="american_call_warrant.cpp">
       <Filter>來源檔案\instrument\equity</Filter>
+    </ClCompile>
+    <ClCompile Include="evaluator.cpp">
+      <Filter>來源檔案\numerical_method</Filter>
     </ClCompile>
     <ClCompile Include="global_variable.cpp">
       <Filter>來源檔案</Filter>
@@ -285,23 +273,11 @@
     <ClInclude Include="gaussian.h">
       <Filter>來源檔案\math\random\distribution\gaussian</Filter>
     </ClInclude>
-    <ClInclude Include="gaussian_inverse.h">
-      <Filter>來源檔案\math\random\distribution\gaussian</Filter>
-    </ClInclude>
-    <ClInclude Include="xorshift64.h">
-      <Filter>來源檔案\math\random\rng\64bits</Filter>
-    </ClInclude>
     <ClInclude Include="xorshift32.h">
       <Filter>來源檔案\math\random\rng\32bits</Filter>
     </ClInclude>
-    <ClInclude Include="rng_64bits.h">
-      <Filter>來源檔案\math\random\rng\64bits</Filter>
-    </ClInclude>
     <ClInclude Include="rng_32bits.h">
       <Filter>來源檔案\math\random\rng\32bits</Filter>
-    </ClInclude>
-    <ClInclude Include="gaussian_ziggurat.h">
-      <Filter>來源檔案\math\random\distribution\gaussian</Filter>
     </ClInclude>
     <ClInclude Include="heston.h">
       <Filter>來源檔案\model\asset_model</Filter>
@@ -350,6 +326,9 @@
     </ClInclude>
     <ClInclude Include="simulator_factory.h">
       <Filter>來源檔案\numerical_method\simulation\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="evaluator.h">
+      <Filter>來源檔案\numerical_method</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

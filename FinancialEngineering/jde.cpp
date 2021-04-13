@@ -25,15 +25,14 @@ namespace FinancialEngineering
 
 	Jde::Jde(SharedPointer<Rng32Bits> rng, 
 		     JdeSetting setting):
-		_real_unifrom_rng(RealUniform32(rng)),
-		_natural_unifrom_rng(NaturalUniform(rng)),
-		_sampling(NonreplacementSampling(NaturalUniform(rng))),
+		_rng(rng),
 		_cr_threshold(setting.cr_threshold),
 		_f_threshold(setting.f_threshold),
 		_f_lower(setting.f_lower),
 	    _f_range(setting.f_upper - setting.f_lower),
 		_tol(setting.tol),
-		_np(setting.np)
+		_np(setting.np),
+		_max_iter(setting.max_iter)
 	{}
 
 	Jde::Jde(SharedPointer<Rng32Bits> rng):
@@ -55,19 +54,17 @@ namespace FinancialEngineering
 		for (Size i = 0; i < d; i++)
 			interval[i] = upper[i] - lower[i];
 
-		_real_unifrom_rng.reset();
-		_natural_unifrom_rng.reset();
-		_sampling.reset();
+		_rng.reset();
 
 		for (Natural i = 0; i < np; i++)
 		{
 			RealArray new_sample(d);
 			for (Size j = 0; j < d; j++)
-				new_sample[j] = lower[j] + interval[j] * _real_unifrom_rng.next_uniform();
+				new_sample[j] = lower[j] + interval[j] * RealUniform::next_uniform(_rng);
 			samples.push_back(new_sample);
 			values.push_back(func->evaluate(new_sample));
-			f.push_back(_f_lower + _f_range * _real_unifrom_rng.next_uniform());
-			cr.push_back(_real_unifrom_rng.next_uniform());
+			f.push_back(_f_lower + _f_range * RealUniform::next_uniform(_rng));
+			cr.push_back(RealUniform::next_uniform(_rng));
 		}
 
 		pair_sort(values, samples);
@@ -85,8 +82,8 @@ namespace FinancialEngineering
 
 			for (Natural i = 0; i < np; i++)
 			{
-				Natural j = _natural_unifrom_rng.next_uniform(d);
-				NaturalArray indexes = _sampling.sampling(3, np - 1);
+				Natural j = NaturalUniform::next_uniform(_rng, d);
+				NaturalArray indexes = NonreplacementSampling::sampling(_rng, 3, np - 1);
 				std::vector<RealArray> x;
 
 				for (NaturalArray::iterator iter = indexes.begin(); iter != indexes.end(); ++iter)
@@ -97,18 +94,18 @@ namespace FinancialEngineering
 				RealArray u(d);
 				for (Natural k = 0; k < d; k++)
 				{
-					if ((k == j) || _real_unifrom_rng.next_uniform() > cr[i])
+					if ((k == j) || RealUniform::next_uniform(_rng) > cr[i])
 					{
 						u[k] = x[indexes[0]][k] + f[i] * (x[indexes[1]][k] - x[indexes[2]][k]);
 						if ((u[k] > upper[k]) || (u[k] < lower[k]))
-							u[k] = lower[k] + interval[k] * _real_unifrom_rng.next_uniform();
+							u[k] = lower[k] + interval[k] * RealUniform::next_uniform(_rng);
 					}
 				}
 
-				if (_real_unifrom_rng.next_uniform() < _cr_threshold)
-					cr[i] = _real_unifrom_rng.next_uniform();
-				if (_real_unifrom_rng.next_uniform() < _f_threshold)
-					f[i] = _f_lower + _f_range * _real_unifrom_rng.next_uniform();
+				if (RealUniform::next_uniform(_rng) < _cr_threshold)
+					cr[i] = RealUniform::next_uniform(_rng);
+				if (RealUniform::next_uniform(_rng) < _f_threshold)
+					f[i] = _f_lower + _f_range * RealUniform::next_uniform(_rng);
 
 				Real new_value = func->evaluate(u);
 				if (new_value < values[i])

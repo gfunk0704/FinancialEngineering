@@ -22,32 +22,32 @@ namespace FinancialEngineering
 
 	inline void GlobalVariable::set_evaluation_date(Date date)
 	{
-		_evaluation_date = date;
-		set_seed(BigNatural(date.modjulian_day()));
+		GlobalVariable::_evaluation_date = date;
+		GlobalVariable::set_seed(Natural(date.modjulian_day()));
 	}
 
 	inline Date GlobalVariable::get_evaluation_date()
 	{
-		return _evaluation_date;
+		return GlobalVariable::_evaluation_date;
 	}
 
 	inline void GlobalVariable::set_seed(Natural seed)
 	{
-		_seed = seed;
+		GlobalVariable::_seed = seed;
 	}
 
 	inline Natural GlobalVariable::get_seed()
 	{
-		return _seed;
+		return GlobalVariable::_seed;
 	}
 
 	inline void GlobalVariable::set_simulation_path(Natural path)
 	{
-		_path = path;
+		GlobalVariable::_path = path;
 	}
 
 	inline Natural GlobalVariable::get_simulation_path()
 	{
-		return _path;
+		return GlobalVariable::_path;
 	}
 }

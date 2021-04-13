@@ -3,8 +3,8 @@
 namespace FinancialEngineering
 {
 	BlackScholesSimulator::BlackScholesSimulator(SharedPointer<AssetModel> model,
-		                                         SharedPointer<Gaussian> gaussian_rng):
-		Simulator(model, gaussian_rng)
+		                                         SharedPointer<Rng32Bits> rng):
+		Simulator(model, rng)
 	{}
 
 	void BlackScholesSimulator::initialize(Date end_date)
@@ -24,8 +24,8 @@ namespace FinancialEngineering
 		Size i = 0;
 		for (SimulationSample::iterator iter = _random.begin(); iter != _random.end(); ++iter)
 		{
-			Real log_drift = (_rt[i++] - drift_coef);
-			sample.push_back(sample.back() * Eigen::exp(log_drift + log_diffusion_coef * (*iter)));
+			Real log_drift = (_rt[i++] - drift_coef) * dt;
+			sample.push_back(sample.back() * Eigen::exp(log_drift * dt + log_diffusion_coef * (*iter)));
 		}
 		return sample;
 	}

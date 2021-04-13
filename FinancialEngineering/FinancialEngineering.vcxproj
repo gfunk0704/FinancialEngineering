@@ -31,10 +31,9 @@
     <ClInclude Include="day_count.h" />
     <ClInclude Include="deposit_rate.h" />
     <ClInclude Include="equity_derivative_quote.h" />
+    <ClInclude Include="evaluator.h" />
     <ClInclude Include="fed_fund_future.h" />
     <ClInclude Include="gaussian.h" />
-    <ClInclude Include="gaussian_inverse.h" />
-    <ClInclude Include="gaussian_ziggurat.h" />
     <ClInclude Include="global_variable.h" />
     <ClInclude Include="deterministic_volatility_function.h" />
     <ClInclude Include="heston.h" />
@@ -52,7 +51,6 @@
     <ClInclude Include="option.h" />
     <ClInclude Include="piecewise_constant.h" />
     <ClInclude Include="rng_32bits.h" />
-    <ClInclude Include="rng_64bits.h" />
     <ClInclude Include="simulator.h" />
     <ClInclude Include="simulator_factory.h" />
     <ClInclude Include="taiwan.h" />
@@ -60,7 +58,6 @@
     <ClInclude Include="uncertain_volatility_simulator.h" />
     <ClInclude Include="uniform.h" />
     <ClInclude Include="xorshift32.h" />
-    <ClInclude Include="xorshift64.h" />
     <ClInclude Include="yield_curve.h" />
     <ClInclude Include="interest_rate_quote.h" />
     <ClInclude Include="nonparametric_yield_term_structure.h" />
@@ -78,8 +75,8 @@
     <ClCompile Include="day_count.cpp" />
     <ClCompile Include="deposit_rate.cpp" />
     <ClCompile Include="equity_derivative_quote.cpp" />
-    <ClCompile Include="gaussian_inverse.cpp" />
-    <ClCompile Include="gaussian_ziggurat.cpp" />
+    <ClCompile Include="evaluator.cpp" />
+    <ClCompile Include="gaussian.cpp" />
     <ClCompile Include="global_variable.cpp" />
     <ClCompile Include="heston.cpp" />
     <ClCompile Include="heston_simulator.cpp" />
@@ -93,12 +90,10 @@
     <ClCompile Include="nonreplacement_sampling.cpp" />
     <ClCompile Include="option.cpp" />
     <ClCompile Include="rng_32bits.cpp" />
-    <ClCompile Include="rng_64bits.cpp" />
     <ClCompile Include="simulator.cpp" />
     <ClCompile Include="simulator_factory.cpp" />
     <ClCompile Include="uncertain_volatility.cpp" />
     <ClCompile Include="uncertain_volatility_simulator.cpp" />
-    <ClCompile Include="uniform.cpp" />
     <ClCompile Include="user_test.cpp" />
     <ClCompile Include="interest_rate_quote.cpp" />
     <ClCompile Include="is_weekend.cpp" />
@@ -108,7 +103,6 @@
     <ClCompile Include="quote.cpp" />
     <ClCompile Include="taiwan.cpp" />
     <ClCompile Include="xorshift32.cpp" />
-    <ClCompile Include="xotshift64.cpp" />
     <ClCompile Include="yield_curve.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

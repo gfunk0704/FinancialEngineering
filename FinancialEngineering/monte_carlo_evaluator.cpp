@@ -5,7 +5,7 @@ namespace FinancialEngineering
 	MonteCarloEvaluator::MonteCarloEvaluator(SharedPointer<AssetModel> model,
 											 SharedPointer<Rng32Bits> rng,
 											 Date end_date) :
-		_model(model),
+		Evaluator(model),
 		_simulator(simulator_factory(model, rng)),
 		_end_date(end_date)
 	{
@@ -28,6 +28,7 @@ namespace FinancialEngineering
 		{
 			_end_date = exercise_date.back();
 			_simulator->initialize(_end_date);
+			_sample = _simulator->generate_sample();
 		}
 		else if (exercise_date.back() == value_date)
 		{
@@ -57,7 +58,7 @@ namespace FinancialEngineering
 
 		for (Size i = exercise_step.size() - 1; i > 0; i--)
 		{
-			RealEigenArray exercise_payoff = payoff_sample[exercise_step[i]];
+			RealEigenArray exercise_payoff = payoff_sample[i];
 
 			if (exercise_payoff.maxCoeff() > 0.0)
 			{
@@ -67,6 +68,7 @@ namespace FinancialEngineering
 					if (exercise_payoff[j] > 0.0)
 						indexes.push_back(j);
 				}
+
 				RealEigenArray step_sample = _sample[exercise_step[i]];
 				RealVector exercise_spot(indexes.size());
 				RealVector continuation(indexes.size());
@@ -78,12 +80,11 @@ namespace FinancialEngineering
 				}
 
 				RealArray expecation = calculate_expectation(exercise_spot, continuation);
-				RealVector eraly_exercise = payoff_sample[exercise_step[i]];
 
 				for (Size j = 0; j < indexes.size(); j++)
 				{
 					if (exercise_payoff(indexes[j]) > expecation[j])
-						final_payoff(indexes[j]) = eraly_exercise(indexes[j]);
+						final_payoff(indexes[j]) = exercise_payoff(indexes[j]);
 				}
 			}
 			this_discount_factor = previous_discount_factor;
@@ -100,7 +101,7 @@ namespace FinancialEngineering
 	RealArray MonteCarloEvaluator::calculate_expectation(RealVector exercise_spot, RealVector continuation)
 	{
 		RealMatrix linear_equs(exercise_spot.rows(), 3);
-		linear_equs << RealVector::Constant(exercise_spot.rows(), 1.0), exercise_spot, (exercise_spot * exercise_spot.transpose());
+		linear_equs << RealVector::Constant(exercise_spot.rows(), 1.0), exercise_spot, exercise_spot.array().square().matrix();
 		RealVector coef = linear_equs.colPivHouseholderQr().solve(continuation);
 		RealArray expectation(exercise_spot.size());
 		for (Size i = 0; i < expectation.size(); i++)

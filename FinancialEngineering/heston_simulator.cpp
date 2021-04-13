@@ -2,9 +2,9 @@
 
 namespace FinancialEngineering
 {
-	HestonSimulator::HestonSimulator(SharedPointer<AssetModel> model, 
-		                             SharedPointer<Gaussian> gaussian_rng) :
-		Simulator(model, gaussian_rng)
+	HestonSimulator::HestonSimulator(SharedPointer<AssetModel> model,
+		                             SharedPointer<Rng32Bits> rng) :
+		Simulator(model, rng)
 	{}
 
 	void HestonSimulator::initialize(Date end_date)

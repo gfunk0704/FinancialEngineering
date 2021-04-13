@@ -2,22 +2,19 @@
 
 namespace FinancialEngineering
 {
-	UncertainVolatilitySimulator::UncertainVolatilitySimulator(SharedPointer<AssetModel> model, 
-		                                                       SharedPointer<Gaussian> gaussian_rng,
-		                                                       SharedPointer<RealUniform> uniform_rng) :
-		Simulator(model, gaussian_rng),
-		_uniform_rng(uniform_rng)
+	UncertainVolatilitySimulator::UncertainVolatilitySimulator(SharedPointer<AssetModel> model,
+		                                                       SharedPointer<Rng32Bits> rng) :
+		Simulator(model, rng)
 	{}
 
 	void UncertainVolatilitySimulator::initialize(Date end_date)
 	{
 		Simulator::initialize(end_date);
-		_uniform_rng.reset();
-		_random = generate_random_numbers((Natural)(end_date - GlobalVariable::get_evaluation_date()));
+		_random = generate_random_numbers(_n_step);
 		_uniform_random = RealArray(GlobalVariable::get_simulation_path());
 		for (RealArray::iterator iter = _uniform_random.begin(); iter != _uniform_random.end(); ++iter)
 		{
-			*iter = _uniform_rng->next_uniform();
+			*iter = RealUniform::next_uniform(_rng);
 		}
 	}
 
@@ -42,7 +39,7 @@ namespace FinancialEngineering
 		Size i = 0;
 		for (SimulationSample::iterator iter = _random.begin(); iter != _random.end(); ++iter)
 		{
-			RealEigenArray log_drift = (_rt[i++] - drift_coef);
+			RealEigenArray log_drift = (_rt[i++] - drift_coef) * dt;
 			sample.push_back(sample.back() * Eigen::exp(log_drift + log_diffusion_coef * (*iter)));
 		}
 		return sample;
