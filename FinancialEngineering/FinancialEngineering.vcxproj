@@ -19,37 +19,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="american_call_warrant.h" />
     <ClInclude Include="american_style_option.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="black_scholes_simulator.h" />
     <ClInclude Include="black_scholes.h" />
     <ClInclude Include="bootstrapper.h" />
     <ClInclude Include="calendar.h" />
+    <ClInclude Include="calibration.h" />
     <ClInclude Include="curve.h" />
     <ClInclude Include="date.h" />
     <ClInclude Include="day_count.h" />
     <ClInclude Include="deposit_rate.h" />
-    <ClInclude Include="equity_derivative_quote.h" />
+    <ClInclude Include="equity_option_quote.h" />
+    <ClInclude Include="european_style_option.h" />
     <ClInclude Include="evaluator.h" />
-    <ClInclude Include="fed_fund_future.h" />
     <ClInclude Include="gaussian.h" />
     <ClInclude Include="global_variable.h" />
     <ClInclude Include="deterministic_volatility_function.h" />
     <ClInclude Include="heston.h" />
     <ClInclude Include="heston_simulator.h" />
-    <ClInclude Include="implicit_filtering.h" />
     <ClInclude Include="instrument.h" />
-    <ClInclude Include="interest_rate_future.h" />
-    <ClInclude Include="irs_rate.h" />
     <ClInclude Include="is_weekend.h" />
     <ClInclude Include="asset_model.h" />
     <ClInclude Include="jde.h" />
+    <ClInclude Include="asatral.h" />
     <ClInclude Include="monte_carlo_evaluator.h" />
     <ClInclude Include="nonreplacement_sampling.h" />
     <ClInclude Include="optimization.h" />
     <ClInclude Include="option.h" />
     <ClInclude Include="piecewise_constant.h" />
+    <ClInclude Include="option_payoff.h" />
     <ClInclude Include="rng_32bits.h" />
     <ClInclude Include="simulator.h" />
     <ClInclude Include="simulator_factory.h" />
@@ -65,30 +64,29 @@
     <ClInclude Include="quote.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="american_call_warrant.cpp" />
     <ClCompile Include="american_style_option.cpp" />
     <ClCompile Include="black_scholes.cpp" />
     <ClCompile Include="black_scholes_simulator.cpp" />
     <ClCompile Include="bootstrapper.cpp" />
     <ClCompile Include="calendar.cpp" />
+    <ClCompile Include="calibration.cpp" />
     <ClCompile Include="curve.cpp" />
     <ClCompile Include="day_count.cpp" />
     <ClCompile Include="deposit_rate.cpp" />
-    <ClCompile Include="equity_derivative_quote.cpp" />
+    <ClCompile Include="equity_option_quote.cpp" />
+    <ClCompile Include="european_style_option.cpp" />
     <ClCompile Include="evaluator.cpp" />
     <ClCompile Include="gaussian.cpp" />
     <ClCompile Include="global_variable.cpp" />
     <ClCompile Include="heston.cpp" />
     <ClCompile Include="heston_simulator.cpp" />
-    <ClCompile Include="implicit_filtering.cpp" />
     <ClCompile Include="instrument.cpp" />
-    <ClCompile Include="interest_rate_future.cpp" />
-    <ClCompile Include="irs_rate.cpp" />
     <ClCompile Include="asset_model.cpp" />
     <ClCompile Include="jde.cpp" />
     <ClCompile Include="monte_carlo_evaluator.cpp" />
     <ClCompile Include="nonreplacement_sampling.cpp" />
     <ClCompile Include="option.cpp" />
+    <ClCompile Include="option_payoff.cpp" />
     <ClCompile Include="rng_32bits.cpp" />
     <ClCompile Include="simulator.cpp" />
     <ClCompile Include="simulator_factory.cpp" />
@@ -180,6 +178,9 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..;.;C:\Users\gfunk0704\Dropbox\github\FinancialEngineering\include\eigen-3.3.9;C:\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -196,6 +197,9 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..;.;C:\Users\gfunk0704\Dropbox\github\FinancialEngineering\include\eigen-3.3.9;C:\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -212,6 +216,9 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..;.;C:\Users\gfunk0704\Dropbox\github\FinancialEngineering\include\eigen-3.3.9;C:\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -228,6 +235,9 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..;.;C:\Users\gfunk0704\Dropbox\github\FinancialEngineering\include\eigen-3.3.9;C:\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

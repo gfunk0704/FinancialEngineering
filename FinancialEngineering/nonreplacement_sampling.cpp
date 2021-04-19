@@ -11,13 +11,13 @@ namespace FinancialEngineering
         NaturalArray sample(size);
 
         for (Natural i = 0; i < size; i++)
-            sample[i] = i;
+            sample(i) = i;
 
         // replace elements with gradually decreasing probability
         for (Natural i = size; i < n; i++) {
-            Natural j = NaturalUniform::next_uniform(rng, i + 1);
+            Natural j = Uniform::next_natural_uniform(rng, i + 1);
             if (j < size)
-                sample[j] = i;
+                sample(j) = i;
         }
 
         return sample;

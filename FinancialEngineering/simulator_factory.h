@@ -12,5 +12,5 @@
 
 namespace FinancialEngineering
 {
-	SharedPointer<Simulator> simulator_factory(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>);
+	SharedPointer<Simulator> simulator_factory(SharedPointer<AssetModel>, bool);
 }

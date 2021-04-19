@@ -1,6 +1,7 @@
 #pragma once
 
 #include <rng_32bits.h>
+#include <global_variable.h>
 
 namespace FinancialEngineering
 {
@@ -9,12 +10,18 @@ namespace FinancialEngineering
 	public:
 		Xorshift32(Natural);
 		Xorshift32();
+		SharedPointer<Rng32Bits> clone_pointer() override;
 		void reset() override;
 		Natural next() override;
 		void status() override;
 	private:
 		Natural _s;
 	};
+
+	inline SharedPointer<Rng32Bits> Xorshift32::clone_pointer()
+	{
+		return SharedPointer<Rng32Bits>(new Xorshift32(_seed));
+	}
 
 	inline void Xorshift32::reset()
 	{
@@ -40,6 +47,7 @@ namespace FinancialEngineering
 	public:
 		Xorwow(Natural);
 		Xorwow();
+		SharedPointer<Rng32Bits> clone_pointer() override;
 		void reset() override;
 		Natural next() override;
 		void status() override;
@@ -47,4 +55,9 @@ namespace FinancialEngineering
 		Natural _a, _b, _c, _d, _e;
 		Natural _counter;
 	};
+
+	inline SharedPointer<Rng32Bits> Xorwow::clone_pointer()
+	{
+		return SharedPointer<Rng32Bits>(new Xorwow(_seed));
+	}
 }

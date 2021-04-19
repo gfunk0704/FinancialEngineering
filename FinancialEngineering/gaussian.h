@@ -4,9 +4,8 @@
 
 namespace FinancialEngineering
 {
-	class Gaussian
+	namespace Gaussian
 	{
-	public:
 		enum class Method
 		{
 			INVERSE,
@@ -14,17 +13,7 @@ namespace FinancialEngineering
 			ZIGGURAT
 		};
 
-		static Real next_gaussian(SharedPointer<Rng32Bits>);
-		static void set_method(Gaussian::Method);
-	private:
-		using GaussianRng = Real(*) (SharedPointer<Rng32Bits>);
-		static GaussianRng _gaussian_rng;
-	};
-
-	inline Real Gaussian::next_gaussian(SharedPointer<Rng32Bits> rng)
-	{
-		return Gaussian::_gaussian_rng(rng);
+		Real next_gaussian(SharedPointer<Rng32Bits>);
+		void set_method(Method);
 	}
-
-	
 }

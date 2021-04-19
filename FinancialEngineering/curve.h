@@ -25,7 +25,7 @@ namespace FinancialEngineering
 		Real integral(Real);
 	protected:
 		PointArray _data;
-		RealArray _cumulative_integral;
+		std::vector<Real> _cumulative_integral;
 
 		virtual void set_cumulative_integral() = 0;
 		virtual Real lhs_extrapolation(Real) = 0;

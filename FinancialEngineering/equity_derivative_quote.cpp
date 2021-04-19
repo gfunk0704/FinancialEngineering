@@ -1,1 +1,0 @@
-#include <equity_derivative_quote.h>

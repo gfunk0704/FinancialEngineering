@@ -9,6 +9,7 @@ namespace FinancialEngineering
 	class HestonSimulator : public Simulator
 	{
 	public:
+		HestonSimulator(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>, bool);
 		HestonSimulator(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>);
 		void initialize(Date) override;
 		SimulationSample generate_sample() override;

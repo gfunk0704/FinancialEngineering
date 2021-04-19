@@ -25,12 +25,16 @@ namespace FinancialEngineering
 
 	inline RealArray Heston::parameter_lower()
 	{
-		return RealArray{ sqrt_double_epsilon, sqrt_double_epsilon, sqrt_double_epsilon, sqrt_double_epsilon, -1.0 };
+		RealArray par(5);
+		par << sqrt_double_epsilon, sqrt_double_epsilon, sqrt_double_epsilon, sqrt_double_epsilon, -1.0;
+		return par;
 	}
 
 	inline RealArray Heston::parameter_upper()
 	{
-		return RealArray{ 1.0, 3.0, 1.0, 1.0, 1.0 };
+		RealArray par(5);
+		par << 1.0, 3.0, 1.0, 1.0, 1.0;
+		return par;
 	}
 
 	inline std::vector<std::string> Heston::parameter_name()

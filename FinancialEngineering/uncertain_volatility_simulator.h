@@ -9,6 +9,7 @@ namespace FinancialEngineering
 	class UncertainVolatilitySimulator : public Simulator
 	{
 	public:
+		UncertainVolatilitySimulator(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>, bool);
 		UncertainVolatilitySimulator(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>);
 		void initialize(Date) override;
 		SimulationSample generate_sample() override;

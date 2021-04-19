@@ -3,30 +3,31 @@
 
 namespace FinancialEngineering
 {
-	class RealUniform
+	namespace Uniform
 	{
-	public:
-		static Real next_uniform(SharedPointer<Rng32Bits>);
-	};
+		inline Real next_real_uniform(SharedPointer<Rng32Bits> rng)
+		{
+			return (rng->next() * 2.32830643653869628906e-010);
+		}
 
-	inline Real RealUniform::next_uniform(SharedPointer<Rng32Bits> rng)
-	{
-		return (rng->next() * 2.32830643653869628906e-010);
-	}
+		inline RealArray next_real_uniform(SharedPointer<Rng32Bits> rng, Natural n)
+		{
+			RealArray random(n);
+			for (Real* iter = random.data(); iter != (random.data() + n); ++iter)
+			{
+				(*iter) = next_real_uniform(rng);
+			}
+			return random;
+		}
 
-	class NaturalUniform
-	{
-	public:
-		static Natural next_uniform(SharedPointer<Rng32Bits>, Natural);
-	};
-
-	inline Natural NaturalUniform::next_uniform(SharedPointer<Rng32Bits> rng, Natural sup)
-	{
-		Natural divisor = ((-sup) / sup) + 1;
-		for (;;) {
-			Natural value = rng->next() / divisor;
-			if (value < sup)
-				return value;
-		};
+		inline Natural next_natural_uniform(SharedPointer<Rng32Bits> rng, Natural sup)
+		{
+			Natural divisor = ((-sup) / sup) + 1;
+			for (;;) {
+				Natural value = rng->next() / divisor;
+				if (value < sup)
+					return value;
+			};
+		}
 	}
 }

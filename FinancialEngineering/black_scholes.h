@@ -25,12 +25,13 @@ namespace FinancialEngineering
 
 	inline RealArray BlackScholes::parameter_lower()
 	{
-		return RealArray{ sqrt_double_epsilon };
+		return RealArray::Constant(1, sqrt_double_epsilon);
 	}
 
 	inline RealArray BlackScholes::parameter_upper()
 	{
-		return RealArray{ 1.0 };
+		return RealArray::Constant(1, 1.0);
+
 	}
 
 	inline std::vector<std::string> BlackScholes::parameter_name()

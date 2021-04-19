@@ -77,6 +77,18 @@
     <Filter Include="來源檔案\numerical_method\simulation\evaluator">
       <UniqueIdentifier>{c69796d8-6239-467a-8bf7-ba34890d2ac9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\calibration">
+      <UniqueIdentifier>{d89e9392-2443-4553-8d86-0964715ff927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\instrument\equity\pyaoff">
+      <UniqueIdentifier>{7f1382ed-4b6a-46c3-82ab-806c05e92ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\optimization\jde">
+      <UniqueIdentifier>{c96288c6-1ee9-42c3-879a-6537f9c8d1ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\optimization\limit_memory_trust_region">
+      <UniqueIdentifier>{c9adbaa6-4ae9-40de-a9bf-13442885a38e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="period.cpp">
@@ -124,12 +136,6 @@
     <ClCompile Include="asset_model.cpp">
       <Filter>來源檔案\model\asset_model</Filter>
     </ClCompile>
-    <ClCompile Include="irs_rate.cpp">
-      <Filter>來源檔案\quote\interest_rate</Filter>
-    </ClCompile>
-    <ClCompile Include="interest_rate_future.cpp">
-      <Filter>來源檔案\quote\interest_rate</Filter>
-    </ClCompile>
     <ClCompile Include="xorshift32.cpp">
       <Filter>來源檔案\math\random\rng\32bits</Filter>
     </ClCompile>
@@ -148,17 +154,11 @@
     <ClCompile Include="uncertain_volatility.cpp">
       <Filter>來源檔案\model\asset_model</Filter>
     </ClCompile>
-    <ClCompile Include="equity_derivative_quote.cpp">
+    <ClCompile Include="equity_option_quote.cpp">
       <Filter>來源檔案\quote\equity</Filter>
-    </ClCompile>
-    <ClCompile Include="jde.cpp">
-      <Filter>來源檔案\math\optimization</Filter>
     </ClCompile>
     <ClCompile Include="nonreplacement_sampling.cpp">
       <Filter>來源檔案\math\random</Filter>
-    </ClCompile>
-    <ClCompile Include="implicit_filtering.cpp">
-      <Filter>來源檔案\math\optimization</Filter>
     </ClCompile>
     <ClCompile Include="american_style_option.cpp">
       <Filter>來源檔案\instrument\equity</Filter>
@@ -187,14 +187,23 @@
     <ClCompile Include="instrument.cpp">
       <Filter>來源檔案\instrument</Filter>
     </ClCompile>
-    <ClCompile Include="american_call_warrant.cpp">
-      <Filter>來源檔案\instrument\equity</Filter>
-    </ClCompile>
     <ClCompile Include="evaluator.cpp">
       <Filter>來源檔案\numerical_method</Filter>
     </ClCompile>
     <ClCompile Include="global_variable.cpp">
       <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="option_payoff.cpp">
+      <Filter>來源檔案\instrument\equity\pyaoff</Filter>
+    </ClCompile>
+    <ClCompile Include="european_style_option.cpp">
+      <Filter>來源檔案\instrument\equity</Filter>
+    </ClCompile>
+    <ClCompile Include="calibration.cpp">
+      <Filter>來源檔案\calibration</Filter>
+    </ClCompile>
+    <ClCompile Include="jde.cpp">
+      <Filter>來源檔案\math\optimization\jde</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -249,7 +258,7 @@
     <ClInclude Include="uniform.h">
       <Filter>來源檔案\math\random\distribution</Filter>
     </ClInclude>
-    <ClInclude Include="equity_derivative_quote.h">
+    <ClInclude Include="equity_option_quote.h">
       <Filter>來源檔案\quote\equity</Filter>
     </ClInclude>
     <ClInclude Include="deterministic_volatility_function.h">
@@ -260,15 +269,6 @@
     </ClInclude>
     <ClInclude Include="asset_model.h">
       <Filter>來源檔案\model\asset_model</Filter>
-    </ClInclude>
-    <ClInclude Include="irs_rate.h">
-      <Filter>來源檔案\quote\interest_rate</Filter>
-    </ClInclude>
-    <ClInclude Include="interest_rate_future.h">
-      <Filter>來源檔案\quote\interest_rate</Filter>
-    </ClInclude>
-    <ClInclude Include="fed_fund_future.h">
-      <Filter>來源檔案\quote\interest_rate</Filter>
     </ClInclude>
     <ClInclude Include="gaussian.h">
       <Filter>來源檔案\math\random\distribution\gaussian</Filter>
@@ -291,22 +291,13 @@
     <ClInclude Include="optimization.h">
       <Filter>來源檔案\math\optimization</Filter>
     </ClInclude>
-    <ClInclude Include="jde.h">
-      <Filter>來源檔案\math\optimization</Filter>
-    </ClInclude>
     <ClInclude Include="nonreplacement_sampling.h">
       <Filter>來源檔案\math\random</Filter>
-    </ClInclude>
-    <ClInclude Include="implicit_filtering.h">
-      <Filter>來源檔案\math\optimization</Filter>
     </ClInclude>
     <ClInclude Include="option.h">
       <Filter>來源檔案\instrument\equity</Filter>
     </ClInclude>
     <ClInclude Include="american_style_option.h">
-      <Filter>來源檔案\instrument\equity</Filter>
-    </ClInclude>
-    <ClInclude Include="american_call_warrant.h">
       <Filter>來源檔案\instrument\equity</Filter>
     </ClInclude>
     <ClInclude Include="black_scholes_simulator.h">
@@ -329,6 +320,21 @@
     </ClInclude>
     <ClInclude Include="evaluator.h">
       <Filter>來源檔案\numerical_method</Filter>
+    </ClInclude>
+    <ClInclude Include="calibration.h">
+      <Filter>來源檔案\calibration</Filter>
+    </ClInclude>
+    <ClInclude Include="option_payoff.h">
+      <Filter>來源檔案\instrument\equity\pyaoff</Filter>
+    </ClInclude>
+    <ClInclude Include="european_style_option.h">
+      <Filter>來源檔案\instrument\equity</Filter>
+    </ClInclude>
+    <ClInclude Include="jde.h">
+      <Filter>來源檔案\math\optimization\jde</Filter>
+    </ClInclude>
+    <ClInclude Include="asatral.h">
+      <Filter>來源檔案\math\optimization\limit_memory_trust_region</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

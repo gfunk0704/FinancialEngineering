@@ -9,10 +9,8 @@ namespace FinancialEngineering
 	}
 
 	Xorshift32::Xorshift32() :
-		Rng32Bits()
-	{
-		reset();
-	}
+		Xorshift32(GlobalVariable::get_seed())
+	{}
 
 	Xorwow::Xorwow(Natural seed) :
 		Rng32Bits(seed)
@@ -21,10 +19,8 @@ namespace FinancialEngineering
 	}
 
 	Xorwow::Xorwow() :
-		Rng32Bits()
-	{
-		reset();
-	}
+		Xorwow(GlobalVariable::get_seed())
+	{}
 
 	void Xorwow::reset()
 	{

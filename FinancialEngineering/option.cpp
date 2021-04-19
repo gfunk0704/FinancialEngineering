@@ -4,10 +4,10 @@ namespace FinancialEngineering
 {
 	Option::Option(SharedPointer<Calendar> calendar, 
 				   Date expiry, 
-				   SmallNatural 
-				   delivery, Real strike):
+				   SmallNatural delivery, 
+		           SharedPointer<OptionPayoff> payoff):
 				   Instrument(calendar, delivery),
 				   _expiry(expiry),
-				   _strike(strike)
+				   _payoff(payoff)
 	{}
 }

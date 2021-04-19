@@ -3,6 +3,12 @@
 namespace FinancialEngineering
 {
 	HestonSimulator::HestonSimulator(SharedPointer<AssetModel> model,
+									 SharedPointer<Rng32Bits> rng,
+									 bool antithetic_variates) :
+		Simulator(model, rng, antithetic_variates)
+	{}
+	
+	HestonSimulator::HestonSimulator(SharedPointer<AssetModel> model,
 		                             SharedPointer<Rng32Bits> rng) :
 		Simulator(model, rng)
 	{}
@@ -31,18 +37,17 @@ namespace FinancialEngineering
 		Real half_kappa = 0.5 * kappa;
 		Real half_sigma = 0.5 * sigma;
 		Real rho_coef = std::sqrt(1 - rho * rho);
-		SimulationSample sample{ RealEigenArray::Constant(n_sample, _model->get_initial_value()) };
-		RealEigenArray wt = RealEigenArray::Constant(n_sample, std::sqrt(v0));
+		SimulationSample sample(n_sample, _n_step + 1);
+		sample.col(0).fill(_model->get_initial_value());
+		RealArray wt = RealArray::Constant(n_sample, std::sqrt(v0));
 		for (Size i = 0; i < _n_step; i++)
 		{
-			RealEigenArray log_drift = (_rt[i] - 0.5 * wt * wt) * dt;
-			sample.push_back(sample.back() * Eigen::exp(log_drift + wt * sqrt_dt * (rho * _random1[i] + rho_coef * _random2[i])));
-			RealEigenArray beta_sqr = theta + (wt * wt - theta) * beta_exp - beta_coef;
-			for (Size j = 0; j < n_sample; j++)
-				beta_sqr[j] = beta_sqr[j] < 0.0 ? 0.0 : beta_sqr[j];
-			
-			RealEigenArray theta_star = (Eigen::sqrt(beta_sqr) - wt * theta_star_coef) / theta_star_dominator;
-			wt += half_kappa * (theta_star - wt) * dt + half_sigma * sqrt_dt * _random1[i];
+			RealArray log_drift = (_rt(i) - 0.5 * wt * wt) * dt;
+			sample.col(i + 1) = sample.col(i) * (log_drift + wt * sqrt_dt * (rho * _random1.col(i) + rho_coef * _random2.col(i))).exp();
+			RealArray beta_sqr = theta + (wt * wt - theta) * beta_exp - beta_coef;
+			beta_sqr.max(0.0);
+			RealArray theta_star = (beta_sqr.sqrt() - wt * theta_star_coef) / theta_star_dominator;
+			wt += half_kappa * (theta_star - wt) * dt + half_sigma * sqrt_dt * _random1.col(i);
 		}
 		return sample;
 	}

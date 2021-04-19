@@ -9,7 +9,7 @@ namespace FinancialEngineering
 
 	void PiecewiseConstantCurve::set_cumulative_integral()
 	{
-		_cumulative_integral = RealArray();
+		_cumulative_integral = std::vector<Real>();
 		Real lhs_time = 0.0;
 		Real cumulative_value = 0.0;
 		for (PointArray::iterator iter = _data.begin(); iter != _data.end(); iter++)

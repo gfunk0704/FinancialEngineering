@@ -19,17 +19,12 @@ namespace FinancialEngineering
 	using Real = double;
 	using Size = std::size_t;
 
-	using ComplexArray = std::vector<Complex>;
-	using BooleanArray = std::vector<bool>;
-	using NaturalArray = std::vector<Natural>;
-	using BigNaturalArray = std::vector<BigNatural>;
-	using RealArray = std::vector<Real>;
+	using ComplexArray = Eigen::ArrayXcd;
+	using NaturalArray = Eigen::Array<Natural, -1, 1>;
+	using RealArray = Eigen::ArrayXd;
 
 	using ComplexVector = Eigen::VectorXcd;
 	using RealVector = Eigen::VectorXd;
-
-	using ComplexEigenArray = Eigen::ArrayXcd;
-	using RealEigenArray = Eigen::ArrayXd;
 
 	using ComplexMatrix = Eigen::MatrixXcd;
 	using NaturalMatrix = Eigen::Matrix<Natural, Eigen::Dynamic, Eigen::Dynamic>;

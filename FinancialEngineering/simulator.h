@@ -5,11 +5,12 @@
 
 namespace FinancialEngineering
 {
-	using SimulationSample = std::vector<RealEigenArray>;
+	using SimulationSample = Eigen::ArrayXXd;
 
 	class Simulator
 	{
 	public:
+		Simulator(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>, bool);
 		Simulator(SharedPointer<AssetModel>, SharedPointer<Rng32Bits>);
 		virtual void initialize(Date);
 		virtual SimulationSample generate_sample() = 0;
@@ -20,16 +21,21 @@ namespace FinancialEngineering
 		RealArray _rt;
 		SharedPointer<AssetModel> _model;
 		SharedPointer<Rng32Bits> _rng;
+		bool _antithetic_variates;
 
+		SimulationSample generate_random_numbers(Natural, Natural, bool);
 		SimulationSample generate_random_numbers(Natural);
+
 	};
+
+	inline SimulationSample Simulator::generate_random_numbers(Natural step)
+	{
+		return generate_random_numbers(step, GlobalVariable::get_simulation_path(), _antithetic_variates);
+	}
 
 	inline std::ostream& operator<<(std::ostream& os, SimulationSample& samples)
 	{
-		for (SimulationSample::iterator iter = samples.begin(); iter != samples.end(); ++iter)
-		{
-			os << (*iter).transpose() << std::endl;
-		}
+		os << samples.transpose() << std::endl;
 		return os;
 	}
 }

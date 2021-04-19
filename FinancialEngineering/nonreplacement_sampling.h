@@ -5,9 +5,8 @@
 
 namespace FinancialEngineering
 {
-	class NonreplacementSampling
+	namespace NonreplacementSampling
 	{
-	public:
-		static NaturalArray sampling(SharedPointer<Rng32Bits>, Natural, Natural);
+		NaturalArray sampling(SharedPointer<Rng32Bits>, Natural, Natural);
 	};
 }

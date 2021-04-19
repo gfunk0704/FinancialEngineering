@@ -25,12 +25,12 @@ namespace FinancialEngineering
 
 	inline RealArray UncertainVolatility::parameter_lower()
 	{
-		return RealArray{ sqrt_double_epsilon, sqrt_double_epsilon, sqrt_double_epsilon};
+		return RealArray::Constant(3, sqrt_double_epsilon);
 	}
 
 	inline RealArray UncertainVolatility::parameter_upper()
 	{
-		return RealArray{ 1.0, 1.0, 1.0 };
+		return RealArray::Constant(3, 1.0);
 	}
 
 	inline std::vector<std::string> UncertainVolatility::parameter_name()

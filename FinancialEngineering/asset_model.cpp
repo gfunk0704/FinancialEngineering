@@ -21,7 +21,7 @@ namespace FinancialEngineering
 		std::vector<std::string> par_name = parameter_name();
 		for (Size i = 0; i < n_parameter(); i++)
 		{
-			par[par_name[i]] = _parameter[i];
+			par[par_name[i]] = _parameter(i);
 		}
 		return par;
 	}
@@ -33,7 +33,7 @@ namespace FinancialEngineering
 		{
 			Parameter::iterator iter = par.find(par_name[i]);
 			if (iter != par.end())
-				_parameter[i] = iter->second;
+				_parameter(i) = iter->second;
 		}
 	}
 }

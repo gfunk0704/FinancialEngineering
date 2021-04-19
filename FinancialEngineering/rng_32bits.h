@@ -1,6 +1,6 @@
 #pragma once
 
-#include <global_variable.h>
+#include <base.h>
 
 namespace FinancialEngineering
 {
@@ -8,7 +8,7 @@ namespace FinancialEngineering
 	{
 	public:
 		Rng32Bits(Natural);
-		Rng32Bits();
+		virtual SharedPointer<Rng32Bits> clone_pointer() = 0;
 		virtual void reset() = 0;
 		virtual Natural next() = 0;
 		virtual void status() = 0;

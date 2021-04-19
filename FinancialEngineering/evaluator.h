@@ -11,7 +11,10 @@ namespace FinancialEngineering
 	{
 	public:
 		Evaluator(SharedPointer<AssetModel>);
-		virtual Real evaluate(SharedPointer<AmericanStyleOption>) = 0;
+		virtual Real evaluate(SharedPointer<Option>) = 0;
+		virtual RealArray evaluate(std::vector<SharedPointer<Option>>) = 0;
+		virtual void initialize(Date) = 0;
+		virtual void update() = 0;
 		SharedPointer<AssetModel> get_model();
 	protected:
 		SharedPointer<AssetModel> _model;
