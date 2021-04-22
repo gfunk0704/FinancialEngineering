@@ -83,11 +83,14 @@
     <Filter Include="來源檔案\instrument\equity\pyaoff">
       <UniqueIdentifier>{7f1382ed-4b6a-46c3-82ab-806c05e92ad0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\math\optimization\jde">
+    <Filter Include="來源檔案\math\optimization\heristic_optimization">
       <UniqueIdentifier>{c96288c6-1ee9-42c3-879a-6537f9c8d1ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\math\optimization\limit_memory_trust_region">
+    <Filter Include="來源檔案\math\optimization\gradient_based_optimization">
       <UniqueIdentifier>{c9adbaa6-4ae9-40de-a9bf-13442885a38e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\optimization\gradient_based_optimization\line_search">
+      <UniqueIdentifier>{e33a556b-2706-404c-a0a8-cb31a5f57e9d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -203,7 +206,22 @@
       <Filter>來源檔案\calibration</Filter>
     </ClCompile>
     <ClCompile Include="jde.cpp">
-      <Filter>來源檔案\math\optimization\jde</Filter>
+      <Filter>來源檔案\math\optimization\heristic_optimization</Filter>
+    </ClCompile>
+    <ClCompile Include="astral.cpp">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization</Filter>
+    </ClCompile>
+    <ClCompile Include="population_based_optimization.cpp">
+      <Filter>來源檔案\math\optimization\heristic_optimization</Filter>
+    </ClCompile>
+    <ClCompile Include="optimization.cpp">
+      <Filter>來源檔案\math\optimization</Filter>
+    </ClCompile>
+    <ClCompile Include="line_search.cpp">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
+    </ClCompile>
+    <ClCompile Include="lewis_overton.cpp">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -331,10 +349,28 @@
       <Filter>來源檔案\instrument\equity</Filter>
     </ClInclude>
     <ClInclude Include="jde.h">
-      <Filter>來源檔案\math\optimization\jde</Filter>
+      <Filter>來源檔案\math\optimization\heristic_optimization</Filter>
     </ClInclude>
-    <ClInclude Include="asatral.h">
-      <Filter>來源檔案\math\optimization\limit_memory_trust_region</Filter>
+    <ClInclude Include="astral.h">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="gradient_based_optimization.h">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="population_based_optimization.h">
+      <Filter>來源檔案\math\optimization\heristic_optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="lbfgsb.h">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="line_search.h">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
+    </ClInclude>
+    <ClInclude Include="lewis_overton.h">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
+    </ClInclude>
+    <ClInclude Include="more_thuente.h">
+      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -36,19 +36,25 @@
     <ClInclude Include="gaussian.h" />
     <ClInclude Include="global_variable.h" />
     <ClInclude Include="deterministic_volatility_function.h" />
+    <ClInclude Include="lbfgsb.h" />
+    <ClInclude Include="lewis_overton.h" />
+    <ClInclude Include="line_search.h" />
+    <ClInclude Include="more_thuente.h" />
+    <ClInclude Include="population_based_optimization.h" />
     <ClInclude Include="heston.h" />
     <ClInclude Include="heston_simulator.h" />
     <ClInclude Include="instrument.h" />
     <ClInclude Include="is_weekend.h" />
     <ClInclude Include="asset_model.h" />
     <ClInclude Include="jde.h" />
-    <ClInclude Include="asatral.h" />
+    <ClInclude Include="astral.h" />
     <ClInclude Include="monte_carlo_evaluator.h" />
     <ClInclude Include="nonreplacement_sampling.h" />
     <ClInclude Include="optimization.h" />
     <ClInclude Include="option.h" />
     <ClInclude Include="piecewise_constant.h" />
     <ClInclude Include="option_payoff.h" />
+    <ClInclude Include="gradient_based_optimization.h" />
     <ClInclude Include="rng_32bits.h" />
     <ClInclude Include="simulator.h" />
     <ClInclude Include="simulator_factory.h" />
@@ -65,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="american_style_option.cpp" />
+    <ClCompile Include="astral.cpp" />
     <ClCompile Include="black_scholes.cpp" />
     <ClCompile Include="black_scholes_simulator.cpp" />
     <ClCompile Include="bootstrapper.cpp" />
@@ -78,6 +85,10 @@
     <ClCompile Include="evaluator.cpp" />
     <ClCompile Include="gaussian.cpp" />
     <ClCompile Include="global_variable.cpp" />
+    <ClCompile Include="lewis_overton.cpp" />
+    <ClCompile Include="line_search.cpp" />
+    <ClCompile Include="optimization.cpp" />
+    <ClCompile Include="population_based_optimization.cpp" />
     <ClCompile Include="heston.cpp" />
     <ClCompile Include="heston_simulator.cpp" />
     <ClCompile Include="instrument.cpp" />

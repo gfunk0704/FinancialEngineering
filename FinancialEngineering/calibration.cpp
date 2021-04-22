@@ -2,14 +2,14 @@
 
 namespace FinancialEngineering
 {
-	static Parameter to_black_scholes_parameter(RealArray value)
+	static Parameter to_black_scholes_parameter(const RealArray& value)
 	{
 		Parameter par;
 		par["sigma"] = value(0);
 		return par;
 	}
 
-	static Parameter to_heston_parameter(RealArray value)
+	static Parameter to_heston_parameter(const RealArray& value)
 	{
 		Parameter par;
 		par["v0"] = value(0);
@@ -20,7 +20,7 @@ namespace FinancialEngineering
 		return par;
 	}
 
-	static Parameter to_uncertain_volatility_parameter(RealArray value)
+	static Parameter to_uncertain_volatility_parameter(const RealArray& value)
 	{
 		Parameter par;
 		par["sigma1"] = value(0);
@@ -43,14 +43,6 @@ namespace FinancialEngineering
 			_premiums[i] = col[i].premium();
 		}
 	}
-
-	Real EquityOptionObjectiveFunction::evaluate(RealArray par)
-	{
-		_evaluator->get_model()->set_parameter(_to_parameter(par));
-		_evaluator->update();
-		RealArray price_diff = _evaluator->evaluate(_portfolio) - _premiums;
-		return (price_diff * price_diff / _premiums).mean();
-	}	
 
 	void EquityOptionObjectiveFunction::initialize_parameter_converter(AssetModel::ModelType type)
 	{

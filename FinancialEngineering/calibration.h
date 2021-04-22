@@ -8,12 +8,12 @@
 namespace FinancialEngineering
 {
 	using OptionCollection = std::vector<EquityOptionQuote>;
-	using ToParameter = Parameter(*)(RealArray);
+	using ToParameter = Parameter(*)(const RealArray&);
 	class EquityOptionObjectiveFunction : public ObjectiveFunction
 	{
 	public:
 		EquityOptionObjectiveFunction(SharedPointer<Evaluator>, OptionCollection);
-		Real evaluate(RealArray) override;
+		Real evaluate(const RealArray&) override;
 	private:
 		Date _end_date;
 		SharedPointer<Evaluator> _evaluator;
@@ -24,6 +24,14 @@ namespace FinancialEngineering
 
 		void initialize_parameter_converter(AssetModel::ModelType);
 	};
+
+	inline Real EquityOptionObjectiveFunction::evaluate(const RealArray& par)
+	{
+		_evaluator->get_model()->set_parameter(_to_parameter(par));
+		_evaluator->update();
+		RealArray price_diff = _evaluator->evaluate(_portfolio) - _premiums;
+		return (price_diff * price_diff / _premiums).mean();
+	}
 
 	struct CalibrationResult
 	{

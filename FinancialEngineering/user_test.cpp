@@ -10,6 +10,7 @@
 #include <simulator_factory.h>
 #include <monte_carlo_evaluator.h>
 #include <american_style_option.h>
+#include <european_style_option.h>
 #include <calibration.h>
 #include <equity_option_quote.h>
 
@@ -20,7 +21,7 @@ int main()
     // set global variable
     GlobalVariable::initialize_n_threads(2);
     GlobalVariable::set_evaluation_date(Date(2021, boost::gregorian::Feb, 26));
-    GlobalVariable::set_simulation_path(5000);
+    GlobalVariable::set_simulation_path(12000);
     GlobalVariable::set_rng(SharedPointer<Rng32Bits>(new Xorwow()));
     Gaussian::set_method(Gaussian::Method::ZIGGURAT);
     // set TW holidays
