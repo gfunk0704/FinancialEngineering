@@ -86,11 +86,20 @@
     <Filter Include="來源檔案\math\optimization\heristic_optimization">
       <UniqueIdentifier>{c96288c6-1ee9-42c3-879a-6537f9c8d1ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\math\optimization\gradient_based_optimization">
+    <Filter Include="來源檔案\model\short_rate_model">
+      <UniqueIdentifier>{d2ccfeab-cd7b-4c52-8dd2-c4dc550813e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\optimization\quasi_newton">
       <UniqueIdentifier>{c9adbaa6-4ae9-40de-a9bf-13442885a38e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\math\optimization\gradient_based_optimization\line_search">
-      <UniqueIdentifier>{e33a556b-2706-404c-a0a8-cb31a5f57e9d}</UniqueIdentifier>
+    <Filter Include="來源檔案\math\optimization\trust_region">
+      <UniqueIdentifier>{a38e0426-2760-4e29-8613-71e7ff3b7705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\numerical_method\cos_fft">
+      <UniqueIdentifier>{5f713781-4eda-45ce-914f-e89e075c08c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\numerical_method\cos_fft\characteristic_function">
+      <UniqueIdentifier>{9323198a-5d38-415a-b9fa-709a69ec721e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -202,14 +211,11 @@
     <ClCompile Include="european_style_option.cpp">
       <Filter>來源檔案\instrument\equity</Filter>
     </ClCompile>
-    <ClCompile Include="calibration.cpp">
+    <ClCompile Include="equity_option_calibration.cpp">
       <Filter>來源檔案\calibration</Filter>
     </ClCompile>
     <ClCompile Include="jde.cpp">
       <Filter>來源檔案\math\optimization\heristic_optimization</Filter>
-    </ClCompile>
-    <ClCompile Include="astral.cpp">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization</Filter>
     </ClCompile>
     <ClCompile Include="population_based_optimization.cpp">
       <Filter>來源檔案\math\optimization\heristic_optimization</Filter>
@@ -217,11 +223,23 @@
     <ClCompile Include="optimization.cpp">
       <Filter>來源檔案\math\optimization</Filter>
     </ClCompile>
-    <ClCompile Include="line_search.cpp">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
+    <ClCompile Include="parametric_model.cpp">
+      <Filter>來源檔案\model</Filter>
     </ClCompile>
-    <ClCompile Include="lewis_overton.cpp">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
+    <ClCompile Include="short_rate_model.cpp">
+      <Filter>來源檔案\model\short_rate_model</Filter>
+    </ClCompile>
+    <ClCompile Include="cir.cpp">
+      <Filter>來源檔案\model\short_rate_model</Filter>
+    </ClCompile>
+    <ClCompile Include="calibration_result.cpp">
+      <Filter>來源檔案\calibration</Filter>
+    </ClCompile>
+    <ClCompile Include="astral.cpp">
+      <Filter>來源檔案\math\optimization\trust_region</Filter>
+    </ClCompile>
+    <ClCompile Include="lbfgsb.cpp">
+      <Filter>來源檔案\math\optimization\quasi_newton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -339,7 +357,7 @@
     <ClInclude Include="evaluator.h">
       <Filter>來源檔案\numerical_method</Filter>
     </ClInclude>
-    <ClInclude Include="calibration.h">
+    <ClInclude Include="equity_option_calibration.h">
       <Filter>來源檔案\calibration</Filter>
     </ClInclude>
     <ClInclude Include="option_payoff.h">
@@ -351,26 +369,38 @@
     <ClInclude Include="jde.h">
       <Filter>來源檔案\math\optimization\heristic_optimization</Filter>
     </ClInclude>
-    <ClInclude Include="astral.h">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization</Filter>
-    </ClInclude>
-    <ClInclude Include="gradient_based_optimization.h">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization</Filter>
+    <ClInclude Include="quasi_newton.h">
+      <Filter>來源檔案\math\optimization\quasi_newton</Filter>
     </ClInclude>
     <ClInclude Include="population_based_optimization.h">
       <Filter>來源檔案\math\optimization\heristic_optimization</Filter>
     </ClInclude>
+    <ClInclude Include="short_rate_model.h">
+      <Filter>來源檔案\model\short_rate_model</Filter>
+    </ClInclude>
+    <ClInclude Include="parametric_model.h">
+      <Filter>來源檔案\model</Filter>
+    </ClInclude>
+    <ClInclude Include="irs_rate.h">
+      <Filter>來源檔案\quote\interest_rate</Filter>
+    </ClInclude>
+    <ClInclude Include="cir.h">
+      <Filter>來源檔案\model\short_rate_model</Filter>
+    </ClInclude>
+    <ClInclude Include="calibration_result.h">
+      <Filter>來源檔案\calibration</Filter>
+    </ClInclude>
+    <ClInclude Include="interest_rate_quote_calibration.h">
+      <Filter>來源檔案\calibration</Filter>
+    </ClInclude>
+    <ClInclude Include="alpha_cir.h">
+      <Filter>來源檔案\model\short_rate_model</Filter>
+    </ClInclude>
+    <ClInclude Include="astral.h">
+      <Filter>來源檔案\math\optimization\trust_region</Filter>
+    </ClInclude>
     <ClInclude Include="lbfgsb.h">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization</Filter>
-    </ClInclude>
-    <ClInclude Include="line_search.h">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
-    </ClInclude>
-    <ClInclude Include="lewis_overton.h">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
-    </ClInclude>
-    <ClInclude Include="more_thuente.h">
-      <Filter>來源檔案\math\optimization\gradient_based_optimization\line_search</Filter>
+      <Filter>來源檔案\math\optimization\quasi_newton</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

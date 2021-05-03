@@ -1,6 +1,6 @@
 #pragma once
 
-#include <gradient_based_optimization.h>
+#include <quasi_newton.h>
 
 namespace FinancialEngineering
 {
@@ -19,7 +19,7 @@ namespace FinancialEngineering
 		Natural m;
 	};
 
-	class Astral : public GradientBasedOptimization
+	class Astral : public QuasiNewton
 	{
 	public:
 		Astral(AstralSetting);

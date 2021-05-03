@@ -1,4 +1,4 @@
-#include <calibration.h>
+#include <equity_option_calibration.h>
 
 namespace FinancialEngineering
 {
@@ -44,25 +44,21 @@ namespace FinancialEngineering
 		}
 	}
 
-	void EquityOptionObjectiveFunction::initialize_parameter_converter(AssetModel::ModelType type)
+	void EquityOptionObjectiveFunction::initialize_parameter_converter(AssetModel::AssetModelType type)
 	{
 		switch (type)
 		{
-		case AssetModel::ModelType::BLACK_SCHOLES:
+		case AssetModel::AssetModelType::BLACK_SCHOLES:
 			_to_parameter = to_black_scholes_parameter;
 			break;
-		case AssetModel::ModelType::HESTON:
+		case AssetModel::AssetModelType::HESTON:
 			_to_parameter = to_heston_parameter;
 			break;
-		case AssetModel::ModelType::UNCERTAIN_VOLATILITY:
+		case AssetModel::AssetModelType::UNCERTAIN_VOLATILITY:
 			_to_parameter = to_uncertain_volatility_parameter;
 			break;
 		}
 	}
 
-	CalibrationResult::CalibrationResult(OptimizationResult result1,
-										 SharedPointer<AssetModel> model):
-		result1(result1),
-		model(model)
-	{}
+	
 }

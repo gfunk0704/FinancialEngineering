@@ -13,6 +13,8 @@ namespace FinancialEngineering
 		YieldCurve(Date, YearFraction, SharedPointer<Curve>);
 		Real discount_factor(Real);
 		Real discount_factor(Date);
+		RealArray discount_factor(RealArray);
+		RealArray discount_factor(DateArray);
 		Real forward_rate(Real);
 		Real forward_rate(Date);
 		Real forward_rate(Real, Real);
@@ -34,6 +36,26 @@ namespace FinancialEngineering
 	inline Real YieldCurve::discount_factor(Date date)
 	{
 		return discount_factor(_year_fraction(_value_date, date));
+	}
+
+	inline RealArray YieldCurve::discount_factor(RealArray tau)
+	{
+		RealArray d(tau.size());
+		for (Eigen::Index i = 0; i < tau.size(); i++)
+		{
+			d(i) = discount_factor(tau(i));
+		}
+		return d;
+	}
+
+	inline RealArray YieldCurve::discount_factor(DateArray date)
+	{
+		RealArray d(date.size());
+		for (Eigen::Index i = 0; i < date.size(); i++)
+		{
+			d(i) = discount_factor(date[i]);
+		}
+		return d;
 	}
 
 	inline Real YieldCurve::forward_rate(Real tau)

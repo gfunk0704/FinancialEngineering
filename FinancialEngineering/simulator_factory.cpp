@@ -7,11 +7,11 @@ namespace FinancialEngineering
 		SharedPointer<Rng32Bits> rng = GlobalVariable::get_rng();
 		switch (model->model_type())
 		{
-		case AssetModel::ModelType::BLACK_SCHOLES:
+		case AssetModel::AssetModelType::BLACK_SCHOLES:
 			return SharedPointer<Simulator>(new BlackScholesSimulator(model, rng, antithetic_variates));
-		case AssetModel::ModelType::HESTON:
+		case AssetModel::AssetModelType::HESTON:
 			return SharedPointer<Simulator>(new HestonSimulator(model, rng, antithetic_variates));
-		case AssetModel::ModelType::UNCERTAIN_VOLATILITY:
+		case AssetModel::AssetModelType::UNCERTAIN_VOLATILITY:
 			return SharedPointer<Simulator>(new UncertainVolatilitySimulator(model, rng, antithetic_variates));
 		}
 	}

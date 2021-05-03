@@ -10,7 +10,6 @@
 
 namespace FinancialEngineering
 {
-	using  InterestRateQuoteCollection = std::vector<SharedPointer<InterestRateQuote>>;
 
 	class BootstrappingObjectiveFunction
 	{

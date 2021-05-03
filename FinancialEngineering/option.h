@@ -15,7 +15,6 @@ namespace FinancialEngineering
 		DateArray delivery_date(Date);
 
 	protected:
-		Real _strike;
 		Date _expiry;
 		SharedPointer<OptionPayoff> _payoff;
 	};

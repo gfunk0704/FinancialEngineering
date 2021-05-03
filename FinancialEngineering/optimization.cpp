@@ -5,14 +5,14 @@ namespace FinancialEngineering
 	OptimizationResult::OptimizationResult(RealArray par, 
 		                                   Real value, 
 		                                   Natural iter, 
-		                                   unsigned convergence) :
+										   SmallInteger convergence) :
 		par(par), 
 		value(value), 
 		iter(iter), 
 		convergence(convergence)
 	{}
-	/*
-	* RealVector GradientBasedAlgorithm::calculate_gradient(const RealArray& x, const Real& f)
+
+	RealVector GradientBasedAlgorithm::calculate_gradient(const RealArray& x, const Real& f)
 	{
 		if (_func->update_gradient(x))
 		{
@@ -51,6 +51,4 @@ namespace FinancialEngineering
 		}
 		return gradient;
 	}
-	*/
-	
 }

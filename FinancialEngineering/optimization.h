@@ -29,12 +29,12 @@ namespace FinancialEngineering
 
 	struct OptimizationResult
 	{
-		OptimizationResult(RealArray, Real, Natural, unsigned);
+		OptimizationResult(RealArray, Real, Natural, SmallInteger);
 
 		RealArray par;
 		Real value;
 		Natural iter;
-		SmallNatural convergence;
+		SmallInteger convergence;
 	};
 
 	class Optimization
@@ -43,7 +43,6 @@ namespace FinancialEngineering
 		virtual OptimizationResult optimize(SharedPointer<ObjectiveFunction>, RealArray, RealArray) = 0;
 	};
 
-	/*
 	class GradientBasedAlgorithm
 	{
 	protected:
@@ -70,6 +69,4 @@ namespace FinancialEngineering
 	{
 		return z.max(_lower).min(_upper);
 	}
-	*/
-	
 }

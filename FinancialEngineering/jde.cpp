@@ -46,7 +46,7 @@ namespace FinancialEngineering
 
 	OptimizationResult Jde::optimize(SharedPointer<ObjectiveFunction> func, RealArray lower, RealArray upper)
 	{
-		SmallNatural convergence = 0;
+		SmallInteger convergence = 0;
 		Natural d = lower.size();
 		Natural np = (_np <= 0) ? (10 * d) : _np;
 		Natural max_iter = (_max_iter <= 0) ? (5000 * d) : _max_iter;
@@ -76,30 +76,17 @@ namespace FinancialEngineering
 			}
 
 			++count;
-			std::time_t start_time;
 
 			for (Natural i = 0; i < np; i++)
 			{
-				std::cout << "sample " << i << std::endl;
-				std::cout << "step 1" << std::endl;
-				start_time = std::clock();
 				RealArray u = samples[i];
 				Natural must_mutation = Uniform::next_natural_uniform(_rng, d);
-
 				NaturalArray indexes = NonreplacementSampling::sampling(_rng, 3, np - 1);
-				std::cout << "time spend: " << diffclock(std::clock(), start_time) << std::endl;
-				
-				std::cout << "step 2" << std::endl;
-				start_time = std::clock();
-
+			
 				for (Natural* iter = indexes.data(); iter != (indexes.data() + indexes.size()); iter++)
 				{
 					(*iter) = (*iter >= i) ? (*iter + 1) : (*iter);
 				}
-
-				std::cout << "time spend: " << diffclock(std::clock(), start_time) << std::endl;
-				std::cout << "step 3" << std::endl;
-				start_time = std::clock();
 
 				for (Natural k = 0; k < d; k++)
 				{
@@ -111,18 +98,10 @@ namespace FinancialEngineering
 					}
 				}
 
-				std::cout << "time spend: " << diffclock(std::clock(), start_time) << std::endl;
-				std::cout << "step 4" << std::endl ;
-				start_time = std::clock();
-
 				if (Uniform::next_real_uniform(_rng) < _cr_threshold)
 					cr(i) = Uniform::next_real_uniform(_rng);
 				if (Uniform::next_real_uniform(_rng) < _f_threshold)
 					f(i) = _f_lower + _f_range * Uniform::next_real_uniform(_rng);
-
-				std::cout << "time spend: " << diffclock(std::clock(), start_time) << std::endl;
-				std::cout << "step 5" << std::endl;
-				start_time = std::clock();
 
 				Real new_value = func->evaluate(u);
 				if (new_value < values(i))
@@ -130,10 +109,6 @@ namespace FinancialEngineering
 					values(i) = new_value;
 					samples[i] = u;
 				}
-
-				std::cout << "time spend: " << diffclock(std::clock(), start_time) << std::endl;
-				std::cout << "end" << std::endl;
-
 			}
 
 			pair_sort(values, samples);

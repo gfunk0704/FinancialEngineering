@@ -1,14 +1,12 @@
 #pragma once
 
-#include <evaluator.h>
-#include <optimization.h>
+#include <calibration_result.h>
 #include <jde.h>
 #include <equity_option_quote.h>
 
 namespace FinancialEngineering
 {
 	using OptionCollection = std::vector<EquityOptionQuote>;
-	using ToParameter = Parameter(*)(const RealArray&);
 	class EquityOptionObjectiveFunction : public ObjectiveFunction
 	{
 	public:
@@ -22,7 +20,7 @@ namespace FinancialEngineering
 		Size _n_option;
 		ToParameter _to_parameter;
 
-		void initialize_parameter_converter(AssetModel::ModelType);
+		void initialize_parameter_converter(AssetModel::AssetModelType);
 	};
 
 	inline Real EquityOptionObjectiveFunction::evaluate(const RealArray& par)
@@ -33,12 +31,7 @@ namespace FinancialEngineering
 		return (price_diff * price_diff / _premiums).mean();
 	}
 
-	struct CalibrationResult
-	{
-		CalibrationResult(OptimizationResult, SharedPointer<AssetModel>);
-		OptimizationResult result1;
-		SharedPointer<AssetModel> model;
-	};
+	
 
 	inline CalibrationResult calibrate(SharedPointer<Evaluator> evaluator, OptionCollection col)
 	{

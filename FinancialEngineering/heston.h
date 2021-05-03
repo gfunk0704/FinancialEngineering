@@ -1,5 +1,6 @@
 #pragma once
 
+#include <parametric_model.h>
 #include <asset_model.h>
 
 namespace FinancialEngineering
@@ -12,7 +13,7 @@ namespace FinancialEngineering
 		virtual SmallNatural n_parameter() override;
 		virtual RealArray parameter_lower() override;
 		virtual RealArray parameter_upper() override;
-		ModelType model_type() override;
+		AssetModelType model_type() override;
 	protected:
 		//parameter order: v0, kappa, theta, sigma, rho
 		virtual std::vector<std::string> parameter_name() override;
@@ -42,8 +43,8 @@ namespace FinancialEngineering
 		return std::vector<std::string>{"v0", "kappa", "theta", "sigma", "rho"};
 	}
 
-	inline AssetModel::ModelType Heston::model_type()
+	inline AssetModel::AssetModelType Heston::model_type()
 	{
-		return ModelType::HESTON;
+		return AssetModelType::HESTON;
 	}
 }

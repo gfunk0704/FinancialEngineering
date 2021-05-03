@@ -3,6 +3,7 @@
 #include <day_count.h>
 #include <quote.h>
 #include <nonparametric_yield_term_structure.h>
+#include <short_rate_model.h>
 
 namespace FinancialEngineering
 {
@@ -10,6 +11,7 @@ namespace FinancialEngineering
 	{
 	public:
 		virtual Real evaluate(NonparametricYieldTermStructure) = 0;
+		virtual Real evaluate(SharedPointer<ZcbClosedForm>) = 0;
 	};
 
 	class InterestRateQuote : public Quote
@@ -22,6 +24,6 @@ namespace FinancialEngineering
 		DayCountConvention _day_count;
 	};
 
-	
+	using  InterestRateQuoteCollection = std::vector<SharedPointer<InterestRateQuote>>;
 }
 

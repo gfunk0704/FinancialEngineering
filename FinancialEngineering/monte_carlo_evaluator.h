@@ -14,6 +14,8 @@ namespace FinancialEngineering
 		void initialize(Date) override;
 		void update() override;
 	private:
+		using MonteCarloValuation = Real(*)(SharedPointer<Option>, Date, DateArray, DateArray, SimulationSample, YieldCurve);
+
 		Date _end_date;
 		SharedPointer<Simulator> _simulator;
 		SimulationSample _sample;

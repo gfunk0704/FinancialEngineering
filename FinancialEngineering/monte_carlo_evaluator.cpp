@@ -2,11 +2,12 @@
 
 namespace FinancialEngineering
 {
-	static Real standard_monte_carlo(SharedPointer<Option> option, Date value_date, DateArray exercise_date, SimulationSample sample, YieldCurve yield_curve)
+
+	static Real standard_monte_carlo(SharedPointer<Option> option, Date value_date, DateArray exercise_date, DateArray delivery_date, SimulationSample sample, YieldCurve yield_curve)
 	{
 		Natural exercise_step = exercise_date[0] - value_date;
 		Natural n_path = GlobalVariable::get_simulation_path();
-		Date single_delivery_date = option->delivery_date(value_date)[0];
+		Date single_delivery_date = delivery_date[0];
 		Real discount_factor = yield_curve.discount_factor(single_delivery_date);
 		RealArray payoff_vector = option->exercise_payoff(sample.col(exercise_step));
 		return discount_factor * (payoff_vector.mean());
@@ -23,10 +24,9 @@ namespace FinancialEngineering
 		return coef(0) + coef(1) * spot_array + coef(2) * spot_array * spot_array;
 	}
 
-	static Real least_square_monte_carlo(SharedPointer<Option> option, Date value_date, DateArray exercise_date, SimulationSample sample, YieldCurve yield_curve)
+	static Real least_square_monte_carlo(SharedPointer<Option> option, Date value_date, DateArray exercise_date, DateArray delivery_date, SimulationSample sample, YieldCurve yield_curve)
 	{
 		Natural n_path = GlobalVariable::get_simulation_path();
-		DateArray delivery_date = option->delivery_date(value_date);
 		NaturalArray exercise_step(exercise_date.size());
 
 		for (Size i = 0; i < exercise_date.size(); i++)
@@ -99,6 +99,8 @@ namespace FinancialEngineering
 	{
 		Date value_date = _model->get_initial_date();
 		DateArray exercise_date = option->exercie_date(value_date);
+		DateArray delivery_date = option->delivery_date(value_date);
+
 		if (exercise_date.back() > _end_date)
 		{
 			initialize(exercise_date.back());
@@ -106,14 +108,13 @@ namespace FinancialEngineering
 		
 		if (exercise_date.size() > 1)
 		{
-			return least_square_monte_carlo(option, value_date, exercise_date, _sample, _model->get_risk_free_rate()->to_yield_curve());
+			return least_square_monte_carlo(option, value_date, exercise_date, delivery_date, _sample, _model->get_risk_free_rate()->to_yield_curve());
 		}
 		else
 		{
-			return standard_monte_carlo(option, value_date, exercise_date, _sample, _model->get_risk_free_rate()->to_yield_curve());
+			return standard_monte_carlo(option, value_date, exercise_date, delivery_date, _sample, _model->get_risk_free_rate()->to_yield_curve());
 		}
 	}
-
 
 	RealArray MonteCarloEvaluator::evaluate(std::vector<SharedPointer<Option>> portfolio)
 	{
@@ -132,13 +133,14 @@ namespace FinancialEngineering
 		for (Integer i = 0; i < n_option; i++)
 		{
 			DateArray exercise_date = portfolio[i]->exercie_date(value_date);
+			DateArray delivery_date = portfolio[i]->delivery_date(value_date);
 			if (exercise_date.size() > 1)
 			{
-				price[i] = least_square_monte_carlo(portfolio[i], value_date, exercise_date, _sample, yield_curve);
+				price[i] = least_square_monte_carlo(portfolio[i], value_date, exercise_date, delivery_date, _sample, yield_curve);
 			}
 			else
 			{
-				price[i] = standard_monte_carlo(portfolio[i], value_date, exercise_date, _sample, yield_curve);
+				price[i] = standard_monte_carlo(portfolio[i], value_date, exercise_date, delivery_date, _sample, yield_curve);
 			}
 		}
 		

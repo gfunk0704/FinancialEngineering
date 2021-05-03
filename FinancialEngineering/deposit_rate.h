@@ -10,6 +10,8 @@ namespace FinancialEngineering
 	public:
 		DepositRateImpliedQuote(Date, Date, Date, YearFraction);
 		Real evaluate(NonparametricYieldTermStructure) override;
+		Real evaluate(SharedPointer<ZcbClosedForm>) override;
+
 	private:
 		Real _fixing_time;
 		Real _expiry_time;
@@ -20,6 +22,11 @@ namespace FinancialEngineering
 	{
 		YieldCurve yield_curve = term_structure.to_yield_curve();
 		return (yield_curve.discount_factor(_fixing_time) / yield_curve.discount_factor(_expiry_time) - 1.0) / _calculation_period;
+	}
+
+	inline Real DepositRateImpliedQuote::evaluate(SharedPointer<ZcbClosedForm> zcb_closed_form)
+	{
+		return (zcb_closed_form->evaluate(_fixing_time) / zcb_closed_form->evaluate(_expiry_time) - 1.0) / _calculation_period;
 	}
 
 	class DepositRate : public InterestRateQuote

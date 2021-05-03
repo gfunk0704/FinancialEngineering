@@ -1,5 +1,6 @@
 #pragma once
 
+#include <parametric_model.h>
 #include <asset_model.h>
 #include <gaussian.h>
 

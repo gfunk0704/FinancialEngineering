@@ -4,24 +4,27 @@
 
 namespace FinancialEngineering
 {
-	/*
-	class GradientBasedOptimization : public Optimization, public GradientBasedAlgorithm
+	class QuasiNewton : public Optimization, public GradientBasedAlgorithm
 	{
 	public:
-		virtual OptimizationResult optimize(SharedPointer<ObjectiveFunction>, RealArray, RealArray, RealArray) = 0;
+		virtual OptimizationResult optimize(SharedPointer<ObjectiveFunction>, RealArray, RealArray, RealArray);
 		OptimizationResult optimize(SharedPointer<ObjectiveFunction>, RealArray, RealArray) override;
 	protected:
 		Natural _n_par;
 		RealArray _x;
 		RealVector _gradient;
+		RealMatrix _hessian;
 		Real _f;
 		RealArray _lower;
 		RealArray _upper;
+		Natural _max_iter;
+		Real _tol;
 
+		virtual void update_hessian() = 0;
 		virtual void initialize(SharedPointer<ObjectiveFunction>, RealArray, RealArray, RealArray);
 	};
 
-	inline void GradientBasedOptimization::initialize(SharedPointer<ObjectiveFunction> func, RealArray x, RealArray lower, RealArray upper)
+	inline void QuasiNewton::initialize(SharedPointer<ObjectiveFunction> func, RealArray x, RealArray lower, RealArray upper)
 	{
 		GradientBasedAlgorithm::initialize(func, lower, upper);
 		_x = x;
@@ -30,10 +33,8 @@ namespace FinancialEngineering
 		_gradient = calculate_gradient(_x, _f);
 	}
 
-	inline OptimizationResult GradientBasedOptimization::optimize(SharedPointer<ObjectiveFunction> func, RealArray lower, RealArray upper)
+	inline OptimizationResult QuasiNewton::optimize(SharedPointer<ObjectiveFunction> func, RealArray lower, RealArray upper)
 	{
 		return optimize(func, (0, 5 * (lower + upper)), lower, upper);
 	}
-	*/
-	
 }

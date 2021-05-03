@@ -19,13 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="alpha_cir.h" />
     <ClInclude Include="american_style_option.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="black_scholes_simulator.h" />
     <ClInclude Include="black_scholes.h" />
     <ClInclude Include="bootstrapper.h" />
     <ClInclude Include="calendar.h" />
-    <ClInclude Include="calibration.h" />
+    <ClInclude Include="calibration_result.h" />
+    <ClInclude Include="equity_option_calibration.h" />
     <ClInclude Include="curve.h" />
     <ClInclude Include="date.h" />
     <ClInclude Include="day_count.h" />
@@ -36,10 +38,10 @@
     <ClInclude Include="gaussian.h" />
     <ClInclude Include="global_variable.h" />
     <ClInclude Include="deterministic_volatility_function.h" />
+    <ClInclude Include="interest_rate_quote_calibration.h" />
+    <ClInclude Include="irs_rate.h" />
     <ClInclude Include="lbfgsb.h" />
-    <ClInclude Include="lewis_overton.h" />
-    <ClInclude Include="line_search.h" />
-    <ClInclude Include="more_thuente.h" />
+    <ClInclude Include="parametric_model.h" />
     <ClInclude Include="population_based_optimization.h" />
     <ClInclude Include="heston.h" />
     <ClInclude Include="heston_simulator.h" />
@@ -54,11 +56,13 @@
     <ClInclude Include="option.h" />
     <ClInclude Include="piecewise_constant.h" />
     <ClInclude Include="option_payoff.h" />
-    <ClInclude Include="gradient_based_optimization.h" />
+    <ClInclude Include="quasi_newton.h" />
     <ClInclude Include="rng_32bits.h" />
+    <ClInclude Include="short_rate_model.h" />
     <ClInclude Include="simulator.h" />
     <ClInclude Include="simulator_factory.h" />
     <ClInclude Include="taiwan.h" />
+    <ClInclude Include="cir.h" />
     <ClInclude Include="uncertain_volatility.h" />
     <ClInclude Include="uncertain_volatility_simulator.h" />
     <ClInclude Include="uniform.h" />
@@ -76,7 +80,9 @@
     <ClCompile Include="black_scholes_simulator.cpp" />
     <ClCompile Include="bootstrapper.cpp" />
     <ClCompile Include="calendar.cpp" />
-    <ClCompile Include="calibration.cpp" />
+    <ClCompile Include="calibration_result.cpp" />
+    <ClCompile Include="equity_option_calibration.cpp" />
+    <ClCompile Include="cir.cpp" />
     <ClCompile Include="curve.cpp" />
     <ClCompile Include="day_count.cpp" />
     <ClCompile Include="deposit_rate.cpp" />
@@ -85,9 +91,9 @@
     <ClCompile Include="evaluator.cpp" />
     <ClCompile Include="gaussian.cpp" />
     <ClCompile Include="global_variable.cpp" />
-    <ClCompile Include="lewis_overton.cpp" />
-    <ClCompile Include="line_search.cpp" />
+    <ClCompile Include="lbfgsb.cpp" />
     <ClCompile Include="optimization.cpp" />
+    <ClCompile Include="parametric_model.cpp" />
     <ClCompile Include="population_based_optimization.cpp" />
     <ClCompile Include="heston.cpp" />
     <ClCompile Include="heston_simulator.cpp" />
@@ -99,6 +105,7 @@
     <ClCompile Include="option.cpp" />
     <ClCompile Include="option_payoff.cpp" />
     <ClCompile Include="rng_32bits.cpp" />
+    <ClCompile Include="short_rate_model.cpp" />
     <ClCompile Include="simulator.cpp" />
     <ClCompile Include="simulator_factory.cpp" />
     <ClCompile Include="uncertain_volatility.cpp" />

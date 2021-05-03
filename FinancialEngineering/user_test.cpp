@@ -11,7 +11,7 @@
 #include <monte_carlo_evaluator.h>
 #include <american_style_option.h>
 #include <european_style_option.h>
-#include <calibration.h>
+#include <equity_option_calibration.h>
 #include <equity_option_quote.h>
 
 using namespace FinancialEngineering;
@@ -81,8 +81,8 @@ int main()
 
     CalibrationResult result = calibrate(evaluator, option_col);
     std::cout << "calibration result" << std::endl;
-    std::cout << "RMSE: " << result.result1.value << std::endl;
-    std::cout << "iteration: " << result.result1.iter << std::endl;
+    std::cout << "RMSE: " << result.result.value << std::endl;
+    std::cout << "iteration: " << result.result.iter << std::endl;
     std::cout << "par: "  << std::endl;
     Parameter par = result.model->get_parameter();
     for (Parameter::iterator iter = par.begin(); iter != par.end(); ++iter)

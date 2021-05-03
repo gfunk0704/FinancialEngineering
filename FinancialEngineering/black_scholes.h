@@ -1,5 +1,6 @@
 #pragma once
 
+#include <parametric_model.h>
 #include <asset_model.h>
 
 namespace FinancialEngineering
@@ -12,7 +13,7 @@ namespace FinancialEngineering
 		SmallNatural n_parameter() override;
 		RealArray parameter_lower() override;
 		RealArray parameter_upper() override;
-		ModelType model_type() override;
+		AssetModelType model_type() override;
 	protected:
 		//parameter order: sigma
 		std::vector<std::string> parameter_name() override;
@@ -39,8 +40,8 @@ namespace FinancialEngineering
 		return std::vector<std::string>{"sigma"};
 	}
 
-	inline AssetModel::ModelType BlackScholes::model_type()
+	inline AssetModel::AssetModelType BlackScholes::model_type()
 	{
-		return ModelType::BLACK_SCHOLES;
+		return AssetModelType::BLACK_SCHOLES;
 	}
 }
